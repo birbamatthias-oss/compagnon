@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Companion — Le système qui travaille quand tu travailles</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --purple: #534AB7;
+      --purple-lt: #EEEDFE;
+      --teal: #0F6E56;
+      --teal-lt: #E1F5EE;
+      --amber: #854F0B;
+      --amber-lt: #FAEEDA;
+      --dark: #1a1a2e;
+      --gray: #f8f8f8;
+    }
+    body { font-family: 'Segoe UI', Arial, sans-serif; color: #222; }
+
+    /* NAV */
+    nav {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.2rem 5%; background: white;
+      box-shadow: 0 1px 12px rgba(0,0,0,0.07); position: sticky; top: 0; z-index: 100;
+    }
+    .logo { font-size: 1.5rem; font-weight: 700; color: var(--purple); letter-spacing: -0.5px; }
+    .nav-cta {
+      background: var(--purple); color: white; padding: 0.6rem 1.4rem;
+      border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.9rem;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: #3d35a0; }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      color: white; text-align: center; padding: 6rem 5% 5rem;
+    }
+    .hero-badge {
+      display: inline-block; background: rgba(83,74,183,0.3); border: 1px solid var(--purple);
+      color: #afa9ec; padding: 0.4rem 1rem; border-radius: 20px;
+      font-size: 0.85rem; margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800;
+      line-height: 1.15; margin-bottom: 1.5rem; max-width: 800px; margin-left: auto; margin-right: auto;
+    }
+    .hero h1 span { color: #afa9ec; }
+    .hero p {
+      font-size: 1.2rem; color: #b0b8d0; max-width: 600px;
+      margin: 0 auto 2.5rem; line-height: 1.7;
+    }
+    .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--purple); color: white; padding: 1rem 2rem;
+      border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 1rem;
+      transition: transform 0.2s, background 0.2s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); background: #3d35a0; }
+    .btn-secondary {
+      background: transparent; color: white; padding: 1rem 2rem;
+      border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 1rem;
+      border: 2px solid rgba(255,255,255,0.3); transition: border-color 0.2s;
+    }
+    .btn-secondary:hover { border-color: white; }
+
+    /* STATS */
+    .stats {
+      display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap;
+      padding: 3rem 5%; background: var(--purple-lt);
+    }
+    .stat { text-align: center; }
+    .stat-num { font-size: 2.2rem; font-weight: 800; color: var(--purple); }
+    .stat-label { font-size: 0.9rem; color: #666; margin-top: 0.3rem; }
+
+    /* PROBLEM */
+    .problem { padding: 5rem 5%; max-width: 900px; margin: 0 auto; text-align: center; }
+    .section-tag {
+      display: inline-block; background: var(--amber-lt); color: var(--amber);
+      padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.8rem;
+      font-weight: 600; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 0.05em;
+    }
+    .problem h2 { font-size: 2.2rem; font-weight: 800; margin-bottom: 1.5rem; line-height: 1.25; }
+    .problem p { font-size: 1.1rem; color: #555; line-height: 1.8; }
+
+    /* BEFORE AFTER */
+    .ba-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+      padding: 4rem 5%; max-width: 1000px; margin: 0 auto;
+    }
+    @media (max-width: 700px) { .ba-grid { grid-template-columns: 1fr; } }
+    .ba-card { border-radius: 16px; padding: 2rem; }
+    .ba-card.before { background: #fff0f0; border: 1px solid #fcc; }
+    .ba-card.after { background: var(--teal-lt); border: 1px solid #5DCAA5; }
+    .ba-label { font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.08em; margin-bottom: 1rem; }
+    .ba-card.before .ba-label { color: #c0392b; }
+    .ba-card.after .ba-label { color: var(--teal); }
+    .ba-card ul { list-style: none; }
+    .ba-card ul li { padding: 0.6rem 0; border-bottom: 1px solid rgba(0,0,0,0.05);
+      font-size: 0.95rem; line-height: 1.5; }
+    .ba-card ul li:last-child { border-bottom: none; }
+    .ba-card.before ul li::before { content: "✗ "; color: #e74c3c; font-weight: 700; }
+    .ba-card.after ul li::before { content: "✓ "; color: var(--teal); font-weight: 700; }
+
+    /* HOW */
+    .how { background: var(--gray); padding: 5rem 5%; text-align: center; }
+    .how h2 { font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .how-sub { color: #666; margin-bottom: 3rem; font-size: 1.05rem; }
+    .steps { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; max-width: 1100px; margin: 0 auto; }
+    .step { background: white; border-radius: 16px; padding: 2rem; flex: 1; min-width: 220px;
+      max-width: 280px; border: 1px solid #eee; text-align: left; }
+    .step-num { width: 40px; height: 40px; background: var(--purple); color: white;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-weight: 800; margin-bottom: 1rem; }
+    .step h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .step p { font-size: 0.9rem; color: #666; line-height: 1.6; }
+
+    /* PRICING */
+    .pricing { padding: 5rem 5%; text-align: center; }
+    .pricing h2 { font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .pricing-sub { color: #666; margin-bottom: 3rem; }
+    .plans { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; max-width: 1100px; margin: 0 auto; }
+    .plan { background: white; border: 1.5px solid #e0e0e0; border-radius: 20px;
+      padding: 2.5rem 2rem; flex: 1; min-width: 260px; max-width: 320px; position: relative; }
+    .plan.popular { border-color: var(--purple); border-width: 2.5px; }
+    .popular-badge {
+      position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+      background: var(--purple); color: white; padding: 0.3rem 1.2rem;
+      border-radius: 20px; font-size: 0.8rem; font-weight: 700; white-space: nowrap;
+    }
+    .plan-name { font-size: 1rem; font-weight: 700; color: #888; text-transform: uppercase;
+      letter-spacing: 0.08em; margin-bottom: 0.5rem; }
+    .plan-price { font-size: 3rem; font-weight: 800; color: var(--purple); line-height: 1; }
+    .plan-price span { font-size: 1rem; font-weight: 400; color: #888; }
+    .plan-desc { color: #666; font-size: 0.9rem; margin: 0.75rem 0 1.5rem; }
+    .plan ul { list-style: none; text-align: left; margin-bottom: 2rem; }
+    .plan ul li { padding: 0.5rem 0; font-size: 0.9rem; border-bottom: 1px solid #f0f0f0; }
+    .plan ul li::before { content: "✓  "; color: var(--teal); font-weight: 700; }
+    .plan ul li.no::before { content: "–  "; color: #ccc; }
+    .plan ul li.no { color: #bbb; }
+    .plan-btn {
+      display: block; width: 100%; padding: 0.9rem; border-radius: 10px;
+      text-align: center; text-decoration: none; font-weight: 700; font-size: 0.95rem;
+      background: var(--purple-lt); color: var(--purple); transition: all 0.2s;
+    }
+    .plan.popular .plan-btn { background: var(--purple); color: white; }
+    .plan-btn:hover { opacity: 0.85; }
+
+    /* GUARANTEE */
+    .guarantee {
+      background: linear-gradient(135deg, var(--teal) 0%, #0d5c47 100%);
+      color: white; padding: 4rem 5%; text-align: center;
+    }
+    .guarantee h2 { font-size: 1.8rem; font-weight: 800; margin-bottom: 1rem; }
+    .guarantee p { max-width: 650px; margin: 0 auto; font-size: 1.05rem;
+      line-height: 1.8; opacity: 0.92; }
+
+    /* CONTACT */
+    .contact { padding: 5rem 5%; text-align: center; background: var(--gray); }
+    .contact h2 { font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .contact p { color: #666; margin-bottom: 2.5rem; font-size: 1.05rem; }
+    form { max-width: 520px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem; }
+    input, textarea, select {
+      padding: 0.9rem 1rem; border: 1.5px solid #ddd; border-radius: 10px;
+      font-size: 1rem; font-family: inherit; transition: border-color 0.2s;
+    }
+    input:focus, textarea:focus, select:focus { outline: none; border-color: var(--purple); }
+    textarea { min-height: 120px; resize: vertical; }
+    .submit-btn {
+      background: var(--purple); color: white; padding: 1rem;
+      border: none; border-radius: 10px; font-size: 1rem; font-weight: 700;
+      cursor: pointer; transition: background 0.2s;
+    }
+    .submit-btn:hover { background: #3d35a0; }
+    .form-note { font-size: 0.85rem; color: #999; }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark); color: #888; text-align: center;
+      padding: 2rem 5%; font-size: 0.9rem;
+    }
+    footer span { color: var(--purple); font-weight: 700; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Companion</div>
+  <a href="#contact" class="nav-cta">Audit gratuit</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">Systeme IA pour artisans & PME françaises</div>
+  <h1>Pendant que tu es sur le chantier,<br><span>ton telephone travaille pour toi.</span></h1>
+  <p>Companion repond a tes prospects, collecte tes avis Google et remplit ton agenda — sans que tu leves le petit doigt.</p>
+  <div class="hero-btns">
+    <a href="#contact" class="btn-primary">Demander mon audit gratuit</a>
+    <a href="#comment" class="btn-secondary">Comment ca marche ?</a>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat">
+    <div class="stat-num">2 min</div>
+    <div class="stat-label">Delai de reponse automatique</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">+38%</div>
+    <div class="stat-label">Leads qualifies en moyenne</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">30 j</div>
+    <div class="stat-label">Premiers resultats garantis</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">5 j</div>
+    <div class="stat-label">Mise en place complete</div>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section class="problem">
+  <div class="section-tag">Le probleme</div>
+  <h2>Tu perds des chantiers sans meme le savoir.</h2>
+  <p>Ton telephone sonne pendant que tu travailles. Le prospect n'attend pas — il appelle le suivant. Ce n'est pas un probleme de personnel. C'est un probleme de systeme. Et on a la solution.</p>
+</section>
+
+<!-- BEFORE / AFTER -->
+<div class="ba-grid">
+  <div class="ba-card before">
+    <div class="ba-label">Avant Companion</div>
+    <ul>
+      <li>Appels manques sur le chantier</li>
+      <li>Prospects perdus en 5 minutes</li>
+      <li>3 avis Google apres 10 ans</li>
+      <li>Soirees perdues sur les devis</li>
+      <li>Concurrent moins bon mais mieux place</li>
+    </ul>
+  </div>
+  <div class="ba-card after">
+    <div class="ba-label">Avec Companion</div>
+    <ul>
+      <li>Reponse automatique en 2 minutes</li>
+      <li>Zero prospect perdu — 24h/24</li>
+      <li>Avis collectes apres chaque chantier</li>
+      <li>Devis generes en quelques clics</li>
+      <li>Tu apparais en premier sur Google</li>
+    </ul>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="comment">
+  <div class="section-tag" style="background:var(--purple-lt);color:var(--purple);">Comment ca marche</div>
+  <h2>Installe en 5 jours. Tu ne fais rien.</h2>
+  <p class="how-sub">On s'occupe de tout. Tu continues tes chantiers.</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3>Audit gratuit 20 min</h3>
+      <p>On analyse ta presence digitale actuelle et on identifie exactement ce que tu perds chaque semaine.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3>Installation en 5 jours</h3>
+      <p>On installe ton systeme complet — Google, WhatsApp, avis automatiques. Tu n'as rien a faire.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3>Resultats en 30 jours</h3>
+      <p>Tu recois un rapport mensuel : leads captures, avis generes, appels recuperes. Tout en chiffres.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <h3>On gere, tu travailles</h3>
+      <p>Le systeme tourne tout seul. Toi tu fais ce que tu sais faire. Ton agenda se remplit.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="tarifs">
+  <div class="section-tag" style="background:var(--teal-lt);color:var(--teal);">Tarifs</div>
+  <h2>Simple, transparent, sans engagement.</h2>
+  <p class="pricing-sub">Un chantier recupere rembourse ton abonnement. Le reste c'est du benefice.</p>
+  <div class="plans">
+
+    <div class="plan">
+      <div class="plan-name">Starter</div>
+      <div class="plan-price">290<span>€/mois</span></div>
+      <div class="plan-desc">Pour commencer a ne plus perdre de prospects</div>
+      <ul>
+        <li>Reponse auto appels manques (SMS)</li>
+        <li>Optimisation Google My Business</li>
+        <li>Systeme avis automatique post-chantier</li>
+        <li>Rapport mensuel chiffre</li>
+        <li class="no">Page web SEO locale</li>
+        <li class="no">Publication reseaux sociaux</li>
+        <li class="no">Google Ads gere</li>
+      </ul>
+      <a href="#contact" class="plan-btn">Commencer</a>
+    </div>
+
+    <div class="plan popular">
+      <div class="popular-badge">Le plus choisi</div>
+      <div class="plan-name">Pro</div>
+      <div class="plan-price">490<span>€/mois</span></div>
+      <div class="plan-desc">Pour dominer ton marche local</div>
+      <ul>
+        <li>Tout le Starter</li>
+        <li>Page web locale optimisee SEO</li>
+        <li>Publication reseaux 3x par semaine</li>
+        <li>Rapport mensuel detaille</li>
+        <li>Support WhatsApp direct</li>
+        <li class="no">Chatbot qualification prospects</li>
+        <li class="no">Google Ads gere</li>
+      </ul>
+      <a href="#contact" class="plan-btn">Commencer</a>
+    </div>
+
+    <div class="plan">
+      <div class="plan-name">Domination</div>
+      <div class="plan-price">790<span>€/mois</span></div>
+      <div class="plan-desc">Pour ceux qui veulent tout automatiser</div>
+      <ul>
+        <li>Tout le Pro</li>
+        <li>Chatbot qualification prospects</li>
+        <li>Google Ads local gere</li>
+        <li>Appel strategique mensuel 30 min</li>
+        <li>Acces prioritaire support</li>
+        <li>Rapport avance avec recommandations</li>
+        <li>Optimisation continue chaque mois</li>
+      </ul>
+      <a href="#contact" class="plan-btn">Commencer</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<section class="guarantee">
+  <h2>Garantie premier mois sans risque.</h2>
+  <p>Si apres 30 jours tu n'es pas convaincu par ce que le systeme a genere pour toi, on s'arrete — sans frais, sans discussion, sans mauvaise ambiance. Ma reputation vaut plus que ton abonnement.</p>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-tag" style="background:var(--purple-lt);color:var(--purple);">Audit gratuit</div>
+  <h2>20 minutes pour tout changer.</h2>
+  <p>On analyse ta situation, on t'explique exactement ce que tu perds. Gratuit, sans engagement.</p>
+  <form action="https://formspree.io/f/mrerprkg" method="POST">
+  <input type="text" name="prenom" placeholder="Ton prenom" required />
+  <input type="text" name="metier" placeholder="Ton metier (ex: plombier, electricien...)" required />
+  <input type="text" name="ville" placeholder="Ta ville" required />
+  <input type="tel" name="telephone" placeholder="Ton telephone" required />
+  <input type="email" name="email" placeholder="Ton email" required />
+  <select name="budget">
+    <option value="">Ton budget mensuel</option>
+    <option>290€/mois — Starter</option>
+    <option>490€/mois — Pro</option>
+    <option>790€/mois — Domination</option>
+    <option>Je veux d'abord l'audit gratuit</option>
+  </select>
+  <button type="submit" class="submit-btn">Reserver mon audit gratuit — 20 min</button>
+  <p class="form-note">Sans engagement · Reponse sous 24h · 100% confidentiel</p>
+</form>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><span>Companion</span> · Le systeme qui travaille quand tu travailles · 2025</p>
+  <p style="margin-top:0.5rem;">contact@companion.fr · Tous droits reserves</p>
+</footer>
+
+<script>
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+
+</body>
+</html>
