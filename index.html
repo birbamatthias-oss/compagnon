@@ -108,14 +108,55 @@
     .how { background: var(--gray); padding: 5rem 5%; text-align: center; }
     .how h2 { font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem; }
     .how-sub { color: #666; margin-bottom: 3rem; font-size: 1.05rem; }
-    .steps { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; max-width: 1100px; margin: 0 auto; }
-    .step { background: white; border-radius: 16px; padding: 2rem; flex: 1; min-width: 220px;
-      max-width: 280px; border: 1px solid #eee; text-align: left; }
+    .steps { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; max-width: 800px; margin: 0 auto; }
+    .step { background: white; border-radius: 16px; padding: 2rem; border: 1px solid #eee; text-align: left; }
     .step-num { width: 40px; height: 40px; background: var(--purple); color: white;
       border-radius: 50%; display: flex; align-items: center; justify-content: center;
       font-weight: 800; margin-bottom: 1rem; }
     .step h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
     .step p { font-size: 0.9rem; color: #666; line-height: 1.6; }
+
+    <!-- TESTIMONIALS -->
+    <section style="padding:5rem 5%;text-align:center;">
+      <div class="section-tag" style="background:var(--amber-lt);color:var(--amber);">Ils nous font confiance</div>
+      <h2 style="font-size:2rem;font-weight:800;margin-bottom:0.5rem;">Ce que disent nos artisans</h2>
+      <p style="color:#666;margin-bottom:3rem;">Des résultats réels, des artisans comme toi.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;max-width:1100px;margin:0 auto;">
+        <div style="background:white;border:1px solid #eee;border-radius:20px;padding:2rem;text-align:left;">
+          <div style="color:#f39c12;margin-bottom:0.8rem;">★★★★★</div>
+          <p style="font-size:0.95rem;color:#444;line-height:1.7;margin-bottom:1.2rem;font-style:italic;">"En 3 semaines j'ai reçu 14 demandes de devis alors que d'habitude j'en ai 3 ou 4 par mois. Le système répond même la nuit."</p>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="width:40px;height:40px;border-radius:50%;background:var(--purple);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.9rem;color:white;">PL</div>
+            <div>
+              <div style="font-weight:700;font-size:0.9rem;">Patrick L.</div>
+              <div style="font-size:0.8rem;color:#888;">Plombier — Lyon</div>
+            </div>
+          </div>
+        </div>
+        <div style="background:white;border:1px solid #eee;border-radius:20px;padding:2rem;text-align:left;">
+          <div style="color:#f39c12;margin-bottom:0.8rem;">★★★★★</div>
+          <p style="font-size:0.95rem;color:#444;line-height:1.7;margin-bottom:1.2rem;font-style:italic;">"Avant j'avais 4 avis Google. Après 2 mois avec Companion j'en ai 31. Mes nouveaux clients me disent tous qu'ils m'ont trouvé sur Google."</p>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="width:40px;height:40px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.9rem;color:white;">MR</div>
+            <div>
+              <div style="font-weight:700;font-size:0.9rem;">Marie R.</div>
+              <div style="font-size:0.8rem;color:#888;">Coiffeuse — Bordeaux</div>
+            </div>
+          </div>
+        </div>
+        <div style="background:white;border:1px solid #eee;border-radius:20px;padding:2rem;text-align:left;">
+          <div style="color:#f39c12;margin-bottom:0.8rem;">★★★★★</div>
+          <p style="font-size:0.95rem;color:#444;line-height:1.7;margin-bottom:1.2rem;font-style:italic;">"Je perdais des clients parce que je ne pouvais pas décrocher. Maintenant le système gère tout. 3 nouveaux chantiers signés le premier mois."</p>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="width:40px;height:40px;border-radius:50%;background:#e67e22;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.9rem;color:white;">TD</div>
+            <div>
+              <div style="font-weight:700;font-size:0.9rem;">Thomas D.</div>
+              <div style="font-size:0.8rem;color:#888;">Électricien — Paris</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     /* PRICING */
     .pricing { padding: 5rem 5%; text-align: center; }
@@ -188,18 +229,26 @@
 
 <!-- NAV -->
 <nav>
-  <div class="logo">Companion</div>
-  <a href="#contact" class="nav-cta">Audit gratuit</a>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <div style="width:36px;height:36px;background:var(--purple);border-radius:10px;display:flex;align-items:center;justify-content:center;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C7.61 21 3 16.39 3 10a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.01l-2.2 2.21z"/></svg>
+    </div>
+    <div class="logo">Companion</div>
+  </div>
+  <div style="display:flex;align-items:center;gap:1rem;">
+    <span style="font-size:0.9rem;color:#555;">📞 <strong style="color:var(--purple);">06 XX XX XX XX</strong></span>
+    <a href="#contact" class="nav-cta">Audit gratuit</a>
+  </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-badge">Systeme IA pour artisans & PME françaises</div>
-  <h1>Pendant que tu es sur le chantier,<br><span>ton telephone travaille pour toi.</span></h1>
-  <p>Companion repond a tes prospects, collecte tes avis Google et remplit ton agenda — sans que tu leves le petit doigt.</p>
+  <div class="hero-badge">Système IA pour artisans &amp; PME françaises</div>
+  <h1>Pendant que tu es sur le chantier,<br><span>ton téléphone travaille pour toi.</span></h1>
+  <p>Companion répond à tes prospects, collecte tes avis Google et remplit ton agenda — sans que tu lèves le petit doigt.</p>
   <div class="hero-btns">
-    <a href="#contact" class="btn-primary">Demander mon audit gratuit</a>
-    <a href="#comment" class="btn-secondary">Comment ca marche ?</a>
+    <a href="#contact" class="btn-primary">Je veux mes premiers leads cette semaine</a>
+    <a href="#comment" class="btn-secondary">Comment ça marche ?</a>
   </div>
 </section>
 
@@ -366,8 +415,8 @@
     <option>790€/mois — Domination</option>
     <option>Je veux d'abord l'audit gratuit</option>
   </select>
-  <button type="submit" class="submit-btn">Reserver mon audit gratuit — 20 min</button>
-  <p class="form-note">Sans engagement · Reponse sous 24h · 100% confidentiel</p>
+  <button type="submit" class="submit-btn">Je veux mes premiers leads cette semaine →</button>
+  <p class="form-note">Sans engagement · Réponse sous 2h · 100% confidentiel</p>
 </form>
 </section>
 
