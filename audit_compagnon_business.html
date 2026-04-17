@@ -1,0 +1,289 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans)}
+.wrap{padding:1.5rem 0}
+.header{margin-bottom:1.5rem}
+.header h1{font-size:20px;font-weight:500;color:var(--color-text-primary)}
+.header p{font-size:14px;color:var(--color-text-secondary);margin-top:4px}
+.score-bar{background:var(--color-background-secondary);border-radius:var(--border-radius-lg);padding:1rem 1.25rem;margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem}
+.score-circle{width:64px;height:64px;flex-shrink:0}
+.score-info{flex:1}
+.score-num{font-size:22px;font-weight:500;color:var(--color-text-primary)}
+.score-label{font-size:13px;color:var(--color-text-secondary);margin-top:2px}
+.progress-track{background:var(--color-border-tertiary);border-radius:4px;height:6px;margin-top:8px;overflow:hidden}
+.progress-fill{height:100%;border-radius:4px;transition:width 0.4s ease;background:#1D9E75}
+.categories{display:flex;flex-direction:column;gap:12px}
+.cat{border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden}
+.cat-header{padding:12px 16px;cursor:pointer;display:flex;align-items:center;gap:10px;background:var(--color-background-primary);user-select:none}
+.cat-header:hover{background:var(--color-background-secondary)}
+.cat-icon{font-size:16px;width:24px;text-align:center}
+.cat-title{flex:1;font-size:15px;font-weight:500;color:var(--color-text-primary)}
+.cat-badge{font-size:12px;padding:2px 8px;border-radius:20px;font-weight:500}
+.badge-ok{background:#EAF3DE;color:#3B6D11}
+.badge-warn{background:#FAEEDA;color:#854F0B}
+.badge-alert{background:#FCEBEB;color:#A32D2D}
+.cat-arrow{font-size:12px;color:var(--color-text-secondary);transition:transform 0.2s}
+.cat-body{border-top:0.5px solid var(--color-border-tertiary);display:none}
+.cat-body.open{display:block}
+.question{padding:12px 16px;border-bottom:0.5px solid var(--color-border-tertiary);display:flex;align-items:flex-start;gap:12px}
+.question:last-child{border-bottom:none}
+.q-text{flex:1}
+.q-main{font-size:14px;color:var(--color-text-primary);line-height:1.5}
+.q-sub{font-size:12px;color:var(--color-text-secondary);margin-top:3px;line-height:1.5}
+.q-controls{display:flex;gap:4px;flex-shrink:0;margin-top:2px}
+.btn-q{border:0.5px solid var(--color-border-secondary);background:transparent;border-radius:6px;padding:4px 10px;font-size:12px;cursor:pointer;color:var(--color-text-secondary);transition:all 0.15s}
+.btn-q:hover{background:var(--color-background-secondary)}
+.btn-q.active-oui{background:#EAF3DE;border-color:#639922;color:#3B6D11;font-weight:500}
+.btn-q.active-non{background:#FCEBEB;border-color:#A32D2D;color:#A32D2D;font-weight:500}
+.btn-q.active-wip{background:#FAEEDA;border-color:#BA7517;color:#854F0B;font-weight:500}
+.cta-row{margin-top:1.5rem;display:flex;gap:8px;flex-wrap:wrap}
+.cta-btn{border:0.5px solid var(--color-border-secondary);background:transparent;border-radius:var(--border-radius-md);padding:8px 14px;font-size:13px;cursor:pointer;color:var(--color-text-primary);display:flex;align-items:center;gap:6px}
+.cta-btn:hover{background:var(--color-background-secondary)}
+.priority-section{margin-top:1.5rem;border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden;display:none}
+.priority-section.visible{display:block}
+.priority-header{padding:10px 16px;background:var(--color-background-secondary);font-size:13px;font-weight:500;color:var(--color-text-secondary)}
+.priority-item{padding:10px 16px;border-bottom:0.5px solid var(--color-border-tertiary);font-size:13px;color:var(--color-text-primary);display:flex;gap:8px;align-items:flex-start;line-height:1.5}
+.priority-item:last-child{border-bottom:none}
+.dot{width:6px;height:6px;border-radius:50%;background:#E24B4A;flex-shrink:0;margin-top:6px}
+</style>
+
+<div class="wrap">
+  <h2 class="sr-only">Audit business Compagnon — 47 questions clés avant ton premier client</h2>
+  <div class="header">
+    <h1>Audit Compagnon — avant ton premier client</h1>
+    <p>47 questions critiques à ton stade. Réponds honnêtement, les angles morts remonteront.</p>
+  </div>
+
+  <div class="score-bar">
+    <svg class="score-circle" viewBox="0 0 64 64">
+      <circle cx="32" cy="32" r="27" fill="none" stroke="var(--color-border-tertiary)" stroke-width="5"/>
+      <circle id="score-arc" cx="32" cy="32" r="27" fill="none" stroke="#1D9E75" stroke-width="5" stroke-linecap="round" stroke-dasharray="169.6" stroke-dashoffset="169.6" transform="rotate(-90 32 32)" style="transition:stroke-dashoffset 0.4s"/>
+      <text id="score-pct" x="32" y="37" text-anchor="middle" font-size="14" font-weight="500" fill="var(--color-text-primary)">0%</text>
+    </svg>
+    <div class="score-info">
+      <div class="score-num" id="score-label">Commence l'audit</div>
+      <div class="score-label" id="score-sub">Réponds aux questions pour voir ton score de préparation</div>
+      <div class="progress-track"><div class="progress-fill" id="prog" style="width:0%"></div></div>
+    </div>
+  </div>
+
+  <div class="categories" id="cats"></div>
+
+  <div class="cta-row">
+    <button class="cta-btn" onclick="showPriorities()">Voir mes priorités urgentes ↗</button>
+    <button class="cta-btn" onclick="sendPrompt('Sur la base de mon audit Compagnon, creuse la question de la structure juridique la plus adaptée à mon stade et la question de l\'incubateur.')">Approfondir avec Claude ↗</button>
+  </div>
+
+  <div class="priority-section" id="priority-block">
+    <div class="priority-header">Points rouges — à régler avant de prospecter</div>
+    <div id="priority-list"></div>
+  </div>
+</div>
+
+<script>
+const data = [
+  {
+    id:'juridique', icon:'⚖️', title:'Structure juridique & déclaration',
+    questions:[
+      {q:'Tu es déjà déclaré (auto-entrepreneur, SASU ou autre) ?', sub:'Sans déclaration tu ne peux pas facturer légalement — c\'est la priorité n°1 absolue.', priority:true},
+      {q:'Tu as un compte bancaire dédié à l\'activité ?', sub:'Obligatoire au-delà de 10k€/an en auto-entrepreneur. Recommandé dès le départ (Shine, Qonto, Revolut Business — ~9€/mois).', priority:true},
+      {q:'Tu as choisi ton statut en connaissance de cause ?', sub:'Auto-entrepreneur = simple mais plafonné (77k€/an). SASU = plus de charges mais pas de plafond. À ce stade l\'AE suffit probablement.', priority:false},
+      {q:'Tu es assujetti à la TVA ou en franchise de base ?', sub:'En AE, franchise de base jusqu\'à 36 800€ de CA. Au-delà tu dois facturer la TVA — à anticiper dès le mois 3 vu tes projections.', priority:false},
+      {q:'Tu as souscrit une RC Pro ?', sub:'Indispensable si un client te reproche un manque à gagner. ~200-400€/an. Sans ça, un client mécontent peut te mettre en difficulté.', priority:true},
+    ]
+  },
+  {
+    id:'outils', icon:'🛠️', title:'Infrastructure & outils pro',
+    questions:[
+      {q:'Tu as un email pro sur ton propre domaine ?', sub:'prenom@compagnon.fr ou prenom@monagence.fr. Un gmail ou hotmail coupe la crédibilité en B2B. OVH + Google Workspace = ~12€/mois.', priority:true},
+      {q:'Ton domaine est enregistré à ton nom (ou nom de la société) ?', sub:'Pas chez un hébergeur générique sans accès admin. Tu dois pouvoir le gérer toi-même.', priority:true},
+      {q:'Tu as un CRM minimal pour tracker tes prospects ?', sub:'Même Notion ou un Airtable gratuit suffit. Sans tracking, tu perds 30% de tes relances — donc 30% de tes clients potentiels.', priority:false},
+      {q:'Tu as un outil de signature électronique ?', sub:'Yousign (français, RGPD), Docusign ou même Hellosign. Tes clients artisans ne vont pas imprimer-signer-scanner.', priority:false},
+      {q:'Tu as un outil de facturation déclaré ?', sub:'Obono, Facture.net ou Freebe. L\'émission de factures manuscrites ou sur Word n\'est pas conforme — et tu en auras besoin dès le client n°1.', priority:true},
+      {q:'Tu as accès à l\'API WhatsApp Business (Meta) pour livrer ton service ?', sub:'C\'est le cœur de ton offre Starter. L\'accès direct nécessite une vérification Meta qui prend 1-3 semaines — à lancer maintenant.', priority:true},
+    ]
+  },
+  {
+    id:'offre', icon:'📦', title:'Solidité de l\'offre & failles commerciales',
+    questions:[
+      {q:'Tu as une réponse précise si un client demande "c\'est quoi exactement le système IA" ?', sub:'Les artisans 45-65 ans vont poser cette question. Éviter le jargon : "un assistant automatique qui répond à ta place en moins de 2 minutes".', priority:false},
+      {q:'Ta garantie 30 jours — tu as défini ce que "résultats" veut dire précisément ?', sub:'Si un client dit "j\'ai pas eu de leads" après 30 jours, comment tu prouves que le système a fonctionné ? Il te faut des métriques claires : X appels captés, Y avis collectés.', priority:true},
+      {q:'Le "sans engagement" — tu as calculé le risque si 40% des clients partent à M+2 ?', sub:'Avec 10 clients à 490€, 4 départs = -1 960€/mois. C\'est supportable, mais anticipe ton churn dès le départ.', priority:false},
+      {q:'Tu as une offre d\'onboarding claire sur 5 jours ?', sub:'Ton BP dit "installation en 5 jours". Qu\'est-ce qui se passe jour 1, 2, 3, 4, 5 concrètement ? L\'artisan va demander.', priority:true},
+      {q:'Tu as défini ce que tu ne fais PAS dans chaque formule ?', sub:'Les artisans testent les limites. Sans scope clair, tu vas te retrouver à faire des choses hors forfait gratuitement.', priority:false},
+      {q:'Tu as testé ton pitch en moins de 60 secondes à voix haute ?', sub:'Script BP = bon à l\'écrit. Mais prononcé à voix haute face à quelqu\'un qui t\'interrompt, ça change tout.', priority:true},
+    ]
+  },
+  {
+    id:'validation', icon:'🎯', title:'Validation terrain (la vraie)',
+    questions:[
+      {q:'Tu as eu au moins 5 conversations réelles avec des artisans ?', sub:'Pas des proches. Des artisans que tu ne connais pas. C\'est la seule vraie validation de la WTP. Si non, c\'est ton risque n°1.', priority:true},
+      {q:'Au moins un artisan t\'a dit "je paierais pour ça" en te nommant un prix ?', sub:'L\'intention d\'achat verbale avant de voir le produit est le meilleur indicateur de PMF.', priority:true},
+      {q:'Tu as identifié une niche précise pour ton premier client (ex: plombiers Île-de-France) ?', sub:'Ton BP vise 1,2M d\'artisans. Mais pour le premier client, plus ta cible est précise, plus tu convertes vite.', priority:false},
+      {q:'Tu as simulé la livraison complète du service Starter de A à Z ?', sub:'Au moins une fois, même sans client payant. Pour voir ce qui coince avant que ça soit en production.', priority:true},
+    ]
+  },
+  {
+    id:'legal', icon:'📋', title:'Légal, contrats & RGPD',
+    questions:[
+      {q:'Tu as des CGV (conditions générales de vente) rédigées ?', sub:'Même simples. Sans CGV, tu n\'as pas de base légale en cas de litige. Légifrance propose des templates gratuits.', priority:true},
+      {q:'Ton site a des mentions légales et une politique de confidentialité ?', sub:'Obligatoire légalement en France. RGPD : si tu collectes des emails ou données artisans, tu dois le déclarer.', priority:true},
+      {q:'Tu as un contrat de prestation standard à faire signer ?', sub:'Même un document d\'une page. Il doit mentionner : périmètre, prix, durée, conditions d\'arrêt, garantie.', priority:true},
+      {q:'Tu as pensé à la propriété des données clients artisans ?', sub:'Les données GMB, avis, leads collectés via ton système — à qui appartiennent-ils si le client arrête ? À préciser dans le contrat.', priority:false},
+      {q:'Tu es couvert si un client prétend que ton système lui a "fait perdre" un prospect ?', sub:'La RC Pro couvre ça, mais ton contrat doit aussi inclure une clause de limitation de responsabilité.', priority:false},
+    ]
+  },
+  {
+    id:'finances', icon:'💰', title:'Finance & trésorerie',
+    questions:[
+      {q:'Tu as calculé combien de mois tu peux tenir sans revenu ?', sub:'Avant le premier client payant, tu as zéro MRR. Si tu as 3 mois de réserve personnelle, tu es en sécurité. Moins → urgence.', priority:true},
+      {q:'Tu as un tableau de suivi de trésorerie même simple ?', sub:'Entrées / sorties / solde. Même sur Google Sheets. Sans ça tu vas te planter sur les charges fixes invisibles.', priority:false},
+      {q:'Tu as anticipé la charge URSSAF sur tes premiers revenus ?', sub:'En AE : 22% de charges sur tout encaissement. Si tu fais 3 000€ en mois 1, tu dois 660€ à l\'URSSAF trimestriellement.', priority:false},
+      {q:'Ton pricing couvre réellement tes coûts d\'outils à plein régime ?', sub:'À 25 clients, Make + Lemlist + Canva + domaines clients = ~300-500€/mois. Vérifie que ta marge tient.', priority:false},
+    ]
+  },
+  {
+    id:'acquisition', icon:'📞', title:'Plan d\'acquisition — réalisme',
+    questions:[
+      {q:'Tu as bloqué 3h/jour minimum pour la prospection les 4 premières semaines ?', sub:'Ton plan S1 = 20 appels/jour. À raison de 5-8 min par appel (décrochés + non décrochés), c\'est 2-3h. C\'est faisable mais ça demande de l\'organisation.', priority:false},
+      {q:'Tu as un script d\'objection préparé pour "j\'ai pas le temps" et "ça m\'intéresse pas" ?', sub:'Ce sont les 2 premières réponses. Sans réponse préparée, tu raccroches. Avec, tu transformes en RDV.', priority:true},
+      {q:'Tu sais comment contacter les groupes Facebook artisans sans te faire bannir ?', sub:'Valeur avant tout. Un post "je vends mes services" = banni en 48h. La méthode : audit gratuit offert, résultat posté, puis DM.', priority:false},
+      {q:'Tu as préparé une proposition commerciale d\'une page (pas un BP) ?', sub:'À envoyer après le premier appel. Business plan ≠ document commercial. Il te faut un one-pager avec 3 formules, prix, garantie.', priority:true},
+      {q:'Tu as planifié comment gérer 5 clients en même temps (semaine 4) sans perdre en qualité ?', sub:'Semaine 4 : 5-7 clients. C\'est encore gérable seul mais il faut un process de livraison répétable dès maintenant.', priority:false},
+    ]
+  },
+  {
+    id:'incubateur', icon:'🚀', title:'Incubateur — la vraie question',
+    questions:[
+      {q:'Tu as listé les 3-4 incubateurs/accélérateurs pertinents pour ton secteur ?', sub:'Schoolab, 50 Partners, Wilco, Station F (Fighters), incubateurs CCI régionaux. Chacun a des critères différents.', priority:false},
+      {q:'Tu es prêt à attendre 2-4 mois pour être accepté ?', sub:'Les process de sélection sont longs. En attendant, tu peux (et tu dois) avoir tes premiers clients. L\'incubateur vient en accélération, pas en validation.', priority:false},
+      {q:'Tu as évalué ce que tu cèdes en échange (equity, temps, focus) ?', sub:'Certains incubateurs demandent 2-8% d\'equity. À ce stade de bootstrap, c\'est à peser soigneusement.', priority:false},
+      {q:'Tu as les 3 choses que l\'incubateur t\'apporte vraiment (réseau CAPEB, mentorat scaling, crédibilité) ?', sub:'Ton BP le mentionne. Mais est-ce que l\'incubateur que tu vises les offre réellement ? Vérifie leurs promos passées.', priority:false},
+      {q:'Tu sais que l\'incubateur est un bonus, pas une condition de démarrage ?', sub:'Tu n\'as pas besoin d\'un incubateur pour tes 10 premiers clients. Les premiers clients se font sans accréditation. L\'incubateur sert à passer de 50 à 500 clients.', priority:false},
+    ]
+  },
+  {
+    id:'angles', icon:'⚠️', title:'Angles morts & risques non vus',
+    questions:[
+      {q:'Tu as pensé à ce qui se passe si Google change son algorithme GMB ?', sub:'En 2024, Google a modifié les règles GMB deux fois. Toute ton offre repose dessus. Plan B ?', priority:false},
+      {q:'Tu as évalué le risque que Meta coupe l\'accès WhatsApp Business à ton compte ?', sub:'Ça arrive. Meta peut suspendre un compte pro pour "activité suspecte". Sans accès, ton service Starter s\'arrête.', priority:true},
+      {q:'Tu as un plan si un concurrent copie exactement ton offre à 199€/mois dans 6 mois ?', sub:'Ton positionnement est bon mais non-brevetable. Ta défense = preuve sociale et vitesse d\'exécution.', priority:false},
+      {q:'Tu as pensé à la charge mentale de gérer 25 clients seul sans burn-out ?', sub:'25 clients × 2h/mois = 50h/mois. Plus prospection (10h), compta (5h), contenu (8h) = 73h/mois. C\'est soutenable mais sans filet.', priority:false},
+      {q:'Tu es prêt à entendre qu\'un artisan sur deux va dire non à cause du prix ?', sub:'La résilience commerciale s\'apprend. Les 20 premiers "non" font partie du processus, pas de l\'échec.', priority:false},
+    ]
+  }
+];
+
+const answers = {};
+
+function getScore(){
+  let yes=0, total=0;
+  data.forEach(c=>c.questions.forEach(q=>{
+    total++;
+    if(answers[q.q]==='oui') yes++;
+  }));
+  return {yes, total, pct: total ? Math.round(yes/total*100) : 0};
+}
+
+function updateScore(){
+  const {yes, total, pct} = getScore();
+  const arc = document.getElementById('score-arc');
+  const circ = 169.6;
+  arc.setAttribute('stroke-dashoffset', (circ - circ*pct/100).toFixed(1));
+  document.getElementById('score-pct').textContent = pct+'%';
+  let label, sub;
+  if(pct===0){label='Commence l\'audit';sub='Réponds aux questions pour voir ton score de préparation';}
+  else if(pct<30){label='Beaucoup de gaps critiques';sub=`${yes}/${total} — Priorité : juridique, outils pro, contrats`;}
+  else if(pct<55){label='Base en construction';sub=`${yes}/${total} — Quelques fondations solides, des trous à boucher`;}
+  else if(pct<75){label='Bonne préparation';sub=`${yes}/${total} — Tu peux prospecter, reste 2-3 choses à caler`;}
+  else if(pct<90){label='Très bon niveau';sub=`${yes}/${total} — Quasi prêt, peaufine les derniers points`;}
+  else{label='Prêt à attaquer';sub=`${yes}/${total} — Tu es bien armé pour ton premier client`;}
+  document.getElementById('score-label').textContent=label;
+  document.getElementById('score-sub').textContent=sub;
+  document.getElementById('prog').style.width=pct+'%';
+  updateBadges();
+}
+
+function updateBadges(){
+  data.forEach(cat=>{
+    let yes=0, non=0, total=cat.questions.length;
+    cat.questions.forEach(q=>{
+      if(answers[q.q]==='oui') yes++;
+      if(answers[q.q]==='non') non++;
+    });
+    const badge = document.getElementById('badge-'+cat.id);
+    if(!badge) return;
+    const score = Math.round(yes/total*100);
+    badge.className = 'cat-badge ' + (score>=75?'badge-ok':non>2?'badge-alert':'badge-warn');
+    badge.textContent = `${yes}/${total}`;
+  });
+}
+
+function setAnswer(qText, val){
+  answers[qText] = val;
+  updateScore();
+  const btns = document.querySelectorAll('[data-q="'+CSS.escape(qText)+'"]');
+  btns.forEach(btn=>{
+    btn.classList.remove('active-oui','active-non','active-wip');
+    if(btn.dataset.val===val) btn.classList.add('active-'+val);
+  });
+}
+
+function toggleCat(id){
+  const body = document.getElementById('body-'+id);
+  const arrow = document.getElementById('arrow-'+id);
+  const open = body.classList.contains('open');
+  body.classList.toggle('open',!open);
+  arrow.textContent = open ? '›' : '‹';
+}
+
+function showPriorities(){
+  const block = document.getElementById('priority-block');
+  const list = document.getElementById('priority-list');
+  block.classList.add('visible');
+  const items = [];
+  data.forEach(cat=>{
+    cat.questions.filter(q=>q.priority && answers[q.q]!=='oui').forEach(q=>{
+      items.push(q.q);
+    });
+  });
+  if(items.length===0){
+    list.innerHTML='<div class="priority-item"><div class="dot" style="background:#1D9E75"></div>Aucun point critique en attente — bien joué !</div>';
+  } else {
+    list.innerHTML = items.map(t=>`<div class="priority-item"><div class="dot"></div>${t}</div>`).join('');
+  }
+  block.scrollIntoView({behavior:'smooth'});
+}
+
+function render(){
+  const container = document.getElementById('cats');
+  container.innerHTML = data.map(cat=>`
+    <div class="cat">
+      <div class="cat-header" onclick="toggleCat('${cat.id}')">
+        <span class="cat-icon">${cat.icon}</span>
+        <span class="cat-title">${cat.title}</span>
+        <span class="cat-badge badge-warn" id="badge-${cat.id}">0/${cat.questions.length}</span>
+        <span class="cat-arrow" id="arrow-${cat.id}">›</span>
+      </div>
+      <div class="cat-body" id="body-${cat.id}">
+        ${cat.questions.map(q=>`
+          <div class="question">
+            <div class="q-text">
+              <div class="q-main">${q.q}${q.priority ? ' <span style="color:#E24B4A;font-size:11px">●</span>':''}</div>
+              <div class="q-sub">${q.sub}</div>
+            </div>
+            <div class="q-controls">
+              <button class="btn-q" data-q="${q.q}" data-val="oui" onclick="setAnswer(this.dataset.q,'oui')">Oui</button>
+              <button class="btn-q" data-q="${q.q}" data-val="wip" onclick="setAnswer(this.dataset.q,'wip')">En cours</button>
+              <button class="btn-q" data-q="${q.q}" data-val="non" onclick="setAnswer(this.dataset.q,'non')">Non</button>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `).join('');
+}
+
+render();
+</script>
