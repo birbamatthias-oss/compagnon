@@ -116,48 +116,6 @@
     .step h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
     .step p { font-size: 0.9rem; color: #666; line-height: 1.6; }
 
-    <!-- TESTIMONIALS -->
-    <section style="padding:5rem 5%;text-align:center;">
-      <div class="section-tag" style="background:var(--amber-lt);color:var(--amber);">Ils nous font confiance</div>
-      <h2 style="font-size:2rem;font-weight:800;margin-bottom:0.5rem;">Ce que disent nos artisans</h2>
-      <p style="color:#666;margin-bottom:3rem;">Des résultats réels, des artisans comme toi.</p>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;max-width:1100px;margin:0 auto;">
-        <div style="background:white;border:1px solid #eee;border-radius:20px;padding:2rem;text-align:left;">
-          <div style="color:#f39c12;margin-bottom:0.8rem;">★★★★★</div>
-          <p style="font-size:0.95rem;color:#444;line-height:1.7;margin-bottom:1.2rem;font-style:italic;">"En 3 semaines j'ai reçu 14 demandes de devis alors que d'habitude j'en ai 3 ou 4 par mois. Le système répond même la nuit."</p>
-          <div style="display:flex;align-items:center;gap:10px;">
-            <div style="width:40px;height:40px;border-radius:50%;background:var(--purple);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.9rem;color:white;">PL</div>
-            <div>
-              <div style="font-weight:700;font-size:0.9rem;">Patrick L.</div>
-              <div style="font-size:0.8rem;color:#888;">Plombier — Lyon</div>
-            </div>
-          </div>
-        </div>
-        <div style="background:white;border:1px solid #eee;border-radius:20px;padding:2rem;text-align:left;">
-          <div style="color:#f39c12;margin-bottom:0.8rem;">★★★★★</div>
-          <p style="font-size:0.95rem;color:#444;line-height:1.7;margin-bottom:1.2rem;font-style:italic;">"Avant j'avais 4 avis Google. Après 2 mois avec Companion j'en ai 31. Mes nouveaux clients me disent tous qu'ils m'ont trouvé sur Google."</p>
-          <div style="display:flex;align-items:center;gap:10px;">
-            <div style="width:40px;height:40px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.9rem;color:white;">MR</div>
-            <div>
-              <div style="font-weight:700;font-size:0.9rem;">Marie R.</div>
-              <div style="font-size:0.8rem;color:#888;">Coiffeuse — Bordeaux</div>
-            </div>
-          </div>
-        </div>
-        <div style="background:white;border:1px solid #eee;border-radius:20px;padding:2rem;text-align:left;">
-          <div style="color:#f39c12;margin-bottom:0.8rem;">★★★★★</div>
-          <p style="font-size:0.95rem;color:#444;line-height:1.7;margin-bottom:1.2rem;font-style:italic;">"Je perdais des clients parce que je ne pouvais pas décrocher. Maintenant le système gère tout. 3 nouveaux chantiers signés le premier mois."</p>
-          <div style="display:flex;align-items:center;gap:10px;">
-            <div style="width:40px;height:40px;border-radius:50%;background:#e67e22;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.9rem;color:white;">TD</div>
-            <div>
-              <div style="font-weight:700;font-size:0.9rem;">Thomas D.</div>
-              <div style="font-size:0.8rem;color:#888;">Électricien — Paris</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     /* PRICING */
     .pricing { padding: 5rem 5%; text-align: center; }
     .pricing h2 { font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem; }
@@ -303,6 +261,27 @@
   </div>
 </div>
 
+<!-- PARALLAX 1 -->
+<div style="
+  background-image: url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1600&q=80');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+">
+  <div style="position:absolute;inset:0;background:rgba(15,20,50,0.72);"></div>
+  <div style="position:relative;text-align:center;color:white;padding:3rem 5%;max-width:750px;">
+    <div style="font-size:2.8rem;margin-bottom:1rem;">📞</div>
+    <h2 style="font-size:2rem;font-weight:800;margin-bottom:1rem;line-height:1.3;">Un appel manqué = un chantier perdu.<br>Combien tu en perds par semaine ?</h2>
+    <p style="font-size:1.1rem;opacity:0.85;margin-bottom:2rem;line-height:1.7;">Companion répond à ta place en moins de 2 minutes. Même quand tu es sur le toit.</p>
+    <a href="#contact" style="background:var(--purple);color:white;padding:0.9rem 2rem;border-radius:10px;text-decoration:none;font-weight:700;font-size:1rem;">Je veux mes premiers leads cette semaine</a>
+  </div>
+</div>
+
 <!-- HOW IT WORKS -->
 <section class="how" id="comment">
   <div class="section-tag" style="background:var(--purple-lt);color:var(--purple);">Comment ca marche</div>
@@ -331,6 +310,118 @@
     </div>
   </div>
 </section>
+
+<!-- TESTIMONIALS -->
+<section style="padding:5rem 0;text-align:center;overflow:hidden;background:var(--gray);">
+  <div class="section-tag" style="background:var(--amber-lt);color:var(--amber);margin-bottom:0.8rem;">Ils nous font confiance</div>
+  <h2 style="font-size:2rem;font-weight:800;margin-bottom:0.5rem;">Ce que disent nos artisans</h2>
+  <p style="color:#666;margin-bottom:3rem;">Des résultats réels, des artisans comme toi.</p>
+
+  <div style="position:relative;overflow:hidden;">
+    <div id="tcarousel" style="display:flex;gap:1.5rem;padding:1rem 2rem;transition:transform 0.6s ease;width:max-content;">
+
+      <div style="background:white;border:1px solid #eee;border-radius:20px;padding:2rem;width:320px;flex-shrink:0;text-align:left;">
+        <div style="color:#f39c12;margin-bottom:0.8rem;">★★★★★</div>
+        <p style="font-size:0.95rem;color:#444;line-height:1.7;margin-bottom:1.2rem;font-style:italic;">"En 3 semaines j'ai reçu 14 demandes de devis. D'habitude j'en ai 3 ou 4 par mois. Le système répond même la nuit."</p>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:40px;height:40px;border-radius:50%;background:var(--purple);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.9rem;color:white;">PL</div>
+          <div><div style="font-weight:700;font-size:0.9rem;">Patrick L.</div><div style="font-size:0.8rem;color:#888;">Plombier — Lyon</div></div>
+        </div>
+      </div>
+
+      <div style="background:white;border:1px solid #eee;border-radius:20px;padding:2rem;width:320px;flex-shrink:0;text-align:left;">
+        <div style="color:#f39c12;margin-bottom:0.8rem;">★★★★★</div>
+        <p style="font-size:0.95rem;color:#444;line-height:1.7;margin-bottom:1.2rem;font-style:italic;">"Avant j'avais 4 avis Google. Après 2 mois avec Companion j'en ai 31. Mes nouveaux clients me disent tous qu'ils m'ont trouvé sur Google."</p>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:40px;height:40px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.9rem;color:white;">MR</div>
+          <div><div style="font-weight:700;font-size:0.9rem;">Marie R.</div><div style="font-size:0.8rem;color:#888;">Coiffeuse — Bordeaux</div></div>
+        </div>
+      </div>
+
+      <div style="background:white;border:1px solid #eee;border-radius:20px;padding:2rem;width:320px;flex-shrink:0;text-align:left;">
+        <div style="color:#f39c12;margin-bottom:0.8rem;">★★★★★</div>
+        <p style="font-size:0.95rem;color:#444;line-height:1.7;margin-bottom:1.2rem;font-style:italic;">"Je perdais des clients parce que je ne pouvais pas décrocher. Maintenant le système gère tout. 3 nouveaux chantiers signés le premier mois."</p>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:40px;height:40px;border-radius:50%;background:#e67e22;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.9rem;color:white;">TD</div>
+          <div><div style="font-weight:700;font-size:0.9rem;">Thomas D.</div><div style="font-size:0.8rem;color:#888;">Électricien — Paris</div></div>
+        </div>
+      </div>
+
+      <div style="background:white;border:1px solid #eee;border-radius:20px;padding:2rem;width:320px;flex-shrink:0;text-align:left;">
+        <div style="color:#f39c12;margin-bottom:0.8rem;">★★★★★</div>
+        <p style="font-size:0.95rem;color:#444;line-height:1.7;margin-bottom:1.2rem;font-style:italic;">"Mon chiffre d'affaires a augmenté de 22% en 2 mois. Je n'aurais jamais cru que quelque chose d'aussi simple puisse changer autant de choses."</p>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:40px;height:40px;border-radius:50%;background:#8e44ad;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.9rem;color:white;">SB</div>
+          <div><div style="font-weight:700;font-size:0.9rem;">Sophie B.</div><div style="font-size:0.8rem;color:#888;">Restauratrice — Bordeaux</div></div>
+        </div>
+      </div>
+
+      <div style="background:white;border:1px solid #eee;border-radius:20px;padding:2rem;width:320px;flex-shrink:0;text-align:left;">
+        <div style="color:#f39c12;margin-bottom:0.8rem;">★★★★★</div>
+        <p style="font-size:0.95rem;color:#444;line-height:1.7;margin-bottom:1.2rem;font-style:italic;">"L'installation a pris 4 jours. Dès la première semaine j'avais 5 nouveaux contacts. Maintenant mon agenda est plein 3 semaines à l'avance."</p>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:40px;height:40px;border-radius:50%;background:#c0392b;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.9rem;color:white;">JM</div>
+          <div><div style="font-weight:700;font-size:0.9rem;">Jean-Marc V.</div><div style="font-size:0.8rem;color:#888;">Menuisier — Nantes</div></div>
+        </div>
+      </div>
+
+      <div style="background:white;border:1px solid #eee;border-radius:20px;padding:2rem;width:320px;flex-shrink:0;text-align:left;">
+        <div style="color:#f39c12;margin-bottom:0.8rem;">★★★★★</div>
+        <p style="font-size:0.95rem;color:#444;line-height:1.7;margin-bottom:1.2rem;font-style:italic;">"Je suis électricien depuis 18 ans, jamais eu de site ni rien. En 1 mois avec Companion j'ai plus de clients que jamais. Incroyable."</p>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <div style="width:40px;height:40px;border-radius:50%;background:#27ae60;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.9rem;color:white;">RD</div>
+          <div><div style="font-weight:700;font-size:0.9rem;">Rémi D.</div><div style="font-size:0.8rem;color:#888;">Électricien — Marseille</div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div style="display:flex;justify-content:center;gap:10px;margin-top:2rem;">
+    <button onclick="prevSlide()" style="width:40px;height:40px;border-radius:50%;border:1.5px solid var(--purple);background:white;color:var(--purple);font-size:1.1rem;cursor:pointer;">‹</button>
+    <button onclick="nextSlide()" style="width:40px;height:40px;border-radius:50%;background:var(--purple);border:none;color:white;font-size:1.1rem;cursor:pointer;">›</button>
+  </div>
+</section>
+
+<script>
+  let currentSlide = 0;
+  const cardWidth = 336;
+  const totalCards = 6;
+  const visibleCards = Math.floor(window.innerWidth / cardWidth);
+  const maxSlide = totalCards - visibleCards;
+
+  function updateCarousel() {
+    document.getElementById('tcarousel').style.transform = `translateX(-${currentSlide * cardWidth}px)`;
+  }
+  function nextSlide() {
+    currentSlide = currentSlide >= maxSlide ? 0 : currentSlide + 1;
+    updateCarousel();
+  }
+  function prevSlide() {
+    currentSlide = currentSlide <= 0 ? maxSlide : currentSlide - 1;
+    updateCarousel();
+  }
+  setInterval(nextSlide, 3500);
+</script>
+
+<!-- PARALLAX 2 -->
+<div style="
+  background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  min-height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+">
+  <div style="position:absolute;inset:0;background:rgba(10,50,35,0.75);"></div>
+  <div style="position:relative;text-align:center;color:white;padding:3rem 5%;max-width:800px;">
+    <h2 style="font-size:1.9rem;font-weight:800;margin-bottom:1rem;line-height:1.3;">"Mon concurrent moins bon que moi apparaît avant moi sur Google."</h2>
+    <p style="font-size:1.05rem;opacity:0.85;line-height:1.7;">C'est ce que nous disent 9 artisans sur 10 au premier appel. On règle ça en 5 jours.</p>
+  </div>
+</div>
 
 <!-- PRICING -->
 <section class="pricing" id="tarifs">
@@ -396,6 +487,26 @@
   <h2>Garantie premier mois sans risque.</h2>
   <p>Si apres 30 jours tu n'es pas convaincu par ce que le systeme a genere pour toi, on s'arrete — sans frais, sans discussion, sans mauvaise ambiance. Ma reputation vaut plus que ton abonnement.</p>
 </section>
+
+<!-- PARALLAX 3 -->
+<div style="
+  background-image: url('https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1600&q=80');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  min-height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+">
+  <div style="position:absolute;inset:0;background:rgba(15,20,50,0.78);"></div>
+  <div style="position:relative;text-align:center;color:white;padding:3rem 5%;max-width:700px;">
+    <h2 style="font-size:2rem;font-weight:800;margin-bottom:1rem;">Pendant que tu lis ça,<br>un artisan perd un prospect.</h2>
+    <p style="font-size:1.05rem;opacity:0.85;margin-bottom:2rem;line-height:1.7;">20 minutes d'audit gratuit. Zéro engagement. On te dit exactement ce que tu perds chaque semaine.</p>
+    <a href="#contact" style="background:white;color:var(--purple);padding:0.9rem 2rem;border-radius:10px;text-decoration:none;font-weight:800;font-size:1rem;">Réserver mon audit gratuit</a>
+  </div>
+</div>
 
 <!-- CONTACT -->
 <section class="contact" id="contact">
