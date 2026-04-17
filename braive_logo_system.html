@@ -1,0 +1,128 @@
+
+<style>
+.lb{font-family:var(--font-sans);padding:.5rem 0 2rem}
+.lbl{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--color-text-tertiary);margin:1.5rem 0 10px}
+.lc{border-radius:16px;padding:1.75rem 2.5rem;display:flex;align-items:center;gap:24px;margin-bottom:10px}
+.lw{font-size:42px;font-weight:800;letter-spacing:-2px;line-height:1}
+.lt{font-size:10px;letter-spacing:.2em;text-transform:uppercase;margin-top:6px}
+.ir{display:flex;gap:24px;align-items:flex-end;padding:1.5rem 2rem;background:var(--color-background-secondary);border-radius:16px;margin-bottom:10px;flex-wrap:wrap}
+.ir-item{display:flex;flex-direction:column;align-items:center;gap:8px}
+.ir-sz{font-size:11px;color:var(--color-text-tertiary)}
+.mc{display:flex;gap:10px;margin-bottom:10px}
+.pr{background:var(--color-background-secondary);border-radius:12px;padding:14px 16px;margin-top:1rem}
+.pi{display:flex;gap:10px;padding:7px 0;font-size:13px;color:var(--color-text-secondary);border-bottom:.5px solid var(--color-border-tertiary);line-height:1.5}
+.pi:last-child{border-bottom:none}
+.ok{color:#1D9E75;font-weight:600;flex-shrink:0}
+</style>
+
+<div class="lb">
+
+<p class="lbl">Logo primaire — fond clair</p>
+<div class="lc" style="background:white;border:.5px solid var(--color-border-tertiary);">
+  <svg width="80" height="80" viewBox="0 0 120 120">
+    <rect width="120" height="120" rx="22" fill="#0B1628"/>
+    <path fill="white" fill-rule="evenodd" d="M 22 18 L 48 18 Q 92 18 92 40 Q 92 62 48 62 Q 100 62 100 82 Q 100 102 48 102 L 22 102 Z M 48 26 Q 82 26 82 40 Q 82 54 48 54 Z M 48 70 Q 90 70 90 82 Q 90 94 48 94 Z"/>
+  </svg>
+  <div>
+    <div class="lw" style="color:#0B1628">bra<span style="color:#2B66D1">i</span>ve</div>
+    <div class="lt" style="color:#2B66D1">Toujours là pour toi</div>
+  </div>
+</div>
+
+<p class="lbl">Version fond sombre</p>
+<div class="lc" style="background:#0B1628;">
+  <svg width="80" height="80" viewBox="0 0 120 120">
+    <rect width="120" height="120" rx="22" fill="white"/>
+    <path fill="#0B1628" fill-rule="evenodd" d="M 22 18 L 48 18 Q 92 18 92 40 Q 92 62 48 62 Q 100 62 100 82 Q 100 102 48 102 L 22 102 Z M 48 26 Q 82 26 82 40 Q 82 54 48 54 Z M 48 70 Q 90 70 90 82 Q 90 94 48 94 Z"/>
+  </svg>
+  <div>
+    <div class="lw" style="color:white">bra<span style="color:#6BA3FF">i</span>ve</div>
+    <div class="lt" style="color:#6BA3FF">Toujours là pour toi</div>
+  </div>
+</div>
+
+<p class="lbl">Icône seule — test de lisibilité à toutes tailles</p>
+<div class="ir">
+  <div class="ir-item">
+    <svg width="96" height="96" viewBox="0 0 120 120">
+      <rect width="120" height="120" rx="22" fill="#0B1628"/>
+      <path fill="white" fill-rule="evenodd" d="M 22 18 L 48 18 Q 92 18 92 40 Q 92 62 48 62 Q 100 62 100 82 Q 100 102 48 102 L 22 102 Z M 48 26 Q 82 26 82 40 Q 82 54 48 54 Z M 48 70 Q 90 70 90 82 Q 90 94 48 94 Z"/>
+    </svg>
+    <span class="ir-sz">96px</span>
+  </div>
+  <div class="ir-item">
+    <svg width="60" height="60" viewBox="0 0 120 120">
+      <rect width="120" height="120" rx="22" fill="#0B1628"/>
+      <path fill="white" fill-rule="evenodd" d="M 22 18 L 48 18 Q 92 18 92 40 Q 92 62 48 62 Q 100 62 100 82 Q 100 102 48 102 L 22 102 Z M 48 26 Q 82 26 82 40 Q 82 54 48 54 Z M 48 70 Q 90 70 90 82 Q 90 94 48 94 Z"/>
+    </svg>
+    <span class="ir-sz">60px</span>
+  </div>
+  <div class="ir-item">
+    <svg width="40" height="40" viewBox="0 0 120 120">
+      <rect width="120" height="120" rx="22" fill="#0B1628"/>
+      <path fill="white" fill-rule="evenodd" d="M 22 18 L 48 18 Q 92 18 92 40 Q 92 62 48 62 Q 100 62 100 82 Q 100 102 48 102 L 22 102 Z M 48 26 Q 82 26 82 40 Q 82 54 48 54 Z M 48 70 Q 90 70 90 82 Q 90 94 48 94 Z"/>
+    </svg>
+    <span class="ir-sz">40px</span>
+  </div>
+  <div class="ir-item">
+    <svg width="24" height="24" viewBox="0 0 120 120">
+      <rect width="120" height="120" rx="22" fill="#0B1628"/>
+      <path fill="white" fill-rule="evenodd" d="M 22 18 L 48 18 Q 92 18 92 40 Q 92 62 48 62 Q 100 62 100 82 Q 100 102 48 102 L 22 102 Z M 48 26 Q 82 26 82 40 Q 82 54 48 54 Z M 48 70 Q 90 70 90 82 Q 90 94 48 94 Z"/>
+    </svg>
+    <span class="ir-sz">24px</span>
+  </div>
+  <div class="ir-item">
+    <svg width="16" height="16" viewBox="0 0 120 120">
+      <rect width="120" height="120" rx="22" fill="#0B1628"/>
+      <path fill="white" fill-rule="evenodd" d="M 22 18 L 48 18 Q 92 18 92 40 Q 92 62 48 62 Q 100 62 100 82 Q 100 102 48 102 L 22 102 Z M 48 26 Q 82 26 82 40 Q 82 54 48 54 Z M 48 70 Q 90 70 90 82 Q 90 94 48 94 Z"/>
+    </svg>
+    <span class="ir-sz">16px</span>
+  </div>
+</div>
+
+<p class="lbl">Monochrome — test one-color</p>
+<div class="mc">
+  <div style="flex:1;background:white;border:.5px solid var(--color-border-tertiary);border-radius:14px;padding:1.25rem 1.5rem;display:flex;align-items:center;gap:14px;">
+    <svg width="44" height="44" viewBox="0 0 120 120">
+      <rect width="120" height="120" rx="22" fill="#111"/>
+      <path fill="white" fill-rule="evenodd" d="M 22 18 L 48 18 Q 92 18 92 40 Q 92 62 48 62 Q 100 62 100 82 Q 100 102 48 102 L 22 102 Z M 48 26 Q 82 26 82 40 Q 82 54 48 54 Z M 48 70 Q 90 70 90 82 Q 90 94 48 94 Z"/>
+    </svg>
+    <span style="font-size:28px;font-weight:800;color:#111;letter-spacing:-1px;">braive</span>
+  </div>
+  <div style="flex:1;background:#111;border-radius:14px;padding:1.25rem 1.5rem;display:flex;align-items:center;gap:14px;">
+    <svg width="44" height="44" viewBox="0 0 120 120">
+      <rect width="120" height="120" rx="22" fill="white"/>
+      <path fill="#111" fill-rule="evenodd" d="M 22 18 L 48 18 Q 92 18 92 40 Q 92 62 48 62 Q 100 62 100 82 Q 100 102 48 102 L 22 102 Z M 48 26 Q 82 26 82 40 Q 82 54 48 54 Z M 48 70 Q 90 70 90 82 Q 90 94 48 94 Z"/>
+    </svg>
+    <span style="font-size:28px;font-weight:800;color:white;letter-spacing:-1px;">braive</span>
+  </div>
+</div>
+
+<p class="lbl">Palette couleurs</p>
+<div style="display:flex;gap:8px;margin-bottom:1rem;flex-wrap:wrap;">
+  <div style="display:flex;align-items:center;gap:10px;background:var(--color-background-secondary);border-radius:10px;padding:10px 14px;flex:1;min-width:140px;">
+    <div style="width:32px;height:32px;border-radius:8px;background:#0B1628;flex-shrink:0;"></div>
+    <div><div style="font-size:12px;font-weight:500;color:var(--color-text-primary);">Navy</div><div style="font-size:11px;color:var(--color-text-tertiary);">#0B1628</div></div>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px;background:var(--color-background-secondary);border-radius:10px;padding:10px 14px;flex:1;min-width:140px;">
+    <div style="width:32px;height:32px;border-radius:8px;background:#2B66D1;flex-shrink:0;"></div>
+    <div><div style="font-size:12px;font-weight:500;color:var(--color-text-primary);">Bleu IA</div><div style="font-size:11px;color:var(--color-text-tertiary);">#2B66D1</div></div>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px;background:var(--color-background-secondary);border-radius:10px;padding:10px 14px;flex:1;min-width:140px;">
+    <div style="width:32px;height:32px;border-radius:8px;background:white;border:.5px solid var(--color-border-tertiary);flex-shrink:0;"></div>
+    <div><div style="font-size:12px;font-weight:500;color:var(--color-text-primary);">Blanc</div><div style="font-size:11px;color:var(--color-text-tertiary);">#FFFFFF</div></div>
+  </div>
+</div>
+
+<div class="pr">
+  <div style="font-size:13px;font-weight:500;color:var(--color-text-primary);margin-bottom:10px;">Principes Logo Design Love — David Airey</div>
+  <div class="pi"><span class="ok">✓</span>Une seule idée forte — le B géométrique pur, immédiatement reconnaissable</div>
+  <div class="pi"><span class="ok">✓</span>Fonctionne en monochrome — noir seul, blanc seul, sans couleur</div>
+  <div class="pi"><span class="ok">✓</span>L'«i» en bleu — clin d'oeil discret à l'IA, détail qui se remarque après</div>
+  <div class="pi"><span class="ok">✓</span>Lisible de 16px à l'affiche — testé sur 5 tailles</div>
+  <div class="pi"><span class="ok">✓</span>Intemporel — géométrie pure, zéro tendance graphique</div>
+  <div class="pi"><span class="ok">✓</span>Deux couleurs maximum — navy + bleu IA</div>
+  <div class="pi"><span class="ok">✓</span>Fonctionne sur fond clair et fond sombre</div>
+</div>
+
+</div>
