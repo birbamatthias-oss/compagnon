@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Braive — Toujours là pour toi</title>
+<meta name="description" content="Braive installe un système IA qui répond à vos prospects, collecte vos avis Google et remplit votre agenda. Pour artisans et PME françaises."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --n:#06090F;
+  --n2:#0B1628;
+  --n3:#0f1e35;
+  --b:#2B66D1;
+  --bl:#6BA3FF;
+  --bll:#C4D9FF;
+  --t:#0F6E56;
+  --tl:#E1F5EE;
+  --a:#854F0B;
+  --al:#FAEEDA;
+  --w:#fff;
+  --g:#f4f6fb;
+  --serif:'Instrument Serif',Georgia,serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:#1a1a2e;background:#fff;overflow-x:hidden}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--n)}
+::-webkit-scrollbar-thumb{background:var(--b);border-radius:2px}
+
+/* ─── NAV ─── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0 5%;height:68px;
+  background:rgba(6,9,15,0.85);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-wordmark{font-family:var(--sans);font-size:1.35rem;font-weight:600;color:#fff;letter-spacing:-0.5px}
+.nav-wordmark em{color:var(--bl);font-style:normal}
+.nav-r{display:flex;align-items:center;gap:12px}
+.nav-wa{
+  display:flex;align-items:center;gap:7px;
+  font-size:0.82rem;font-weight:500;color:#25D366;
+  background:rgba(37,211,102,0.1);
+  border:1px solid rgba(37,211,102,0.2);
+  padding:0.45rem 1rem;border-radius:6px;
+  text-decoration:none;transition:all 0.2s;
+}
+.nav-wa:hover{background:rgba(37,211,102,0.18)}
+.nav-cta{
+  background:var(--b);color:#fff;
+  padding:0.5rem 1.2rem;border-radius:6px;
+  text-decoration:none;font-weight:500;font-size:0.82rem;
+  transition:all 0.2s;letter-spacing:0.01em;
+}
+.nav-cta:hover{background:#1a52b8}
+
+/* ─── HERO ─── */
+.hero{
+  min-height:100vh;display:flex;align-items:center;
+  background:var(--n);position:relative;overflow:hidden;
+  padding:100px 5% 60px;
+}
+.hero-noise{
+  position:absolute;inset:0;opacity:0.03;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat:repeat;background-size:128px;
+}
+.hero-glow{
+  position:absolute;width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(43,102,209,0.18) 0%,transparent 70%);
+  top:-100px;right:-100px;pointer-events:none;
+}
+.hero-glow2{
+  position:absolute;width:400px;height:400px;border-radius:50%;
+  background:radial-gradient(circle,rgba(107,163,255,0.08) 0%,transparent 70%);
+  bottom:0;left:10%;pointer-events:none;
+}
+.hero-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:5rem;
+  align-items:center;max-width:1160px;margin:0 auto;width:100%;position:relative;
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:0.72rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--bl);margin-bottom:1.5rem;
+}
+.hero-eyebrow-dot{width:5px;height:5px;border-radius:50%;background:var(--bl);animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.2}}
+.hero h1{
+  font-family:var(--serif);
+  font-size:clamp(2.4rem,4.5vw,3.8rem);
+  font-weight:400;line-height:1.1;
+  color:#fff;margin-bottom:1.5rem;
+  letter-spacing:-0.5px;
+}
+.hero h1 em{color:var(--bl);font-style:italic}
+.hero-sub{
+  font-size:1rem;color:rgba(255,255,255,0.5);
+  line-height:1.8;margin-bottom:2.5rem;max-width:460px;
+  font-weight:300;
+}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.btn-p{
+  background:var(--b);color:#fff;
+  padding:0.9rem 1.8rem;border-radius:8px;
+  text-decoration:none;font-weight:500;font-size:0.9rem;
+  display:inline-flex;align-items:center;gap:8px;
+  transition:all 0.25s;letter-spacing:0.01em;
+}
+.btn-p:hover{background:#1a52b8;transform:translateY(-1px)}
+.btn-s{
+  background:transparent;color:rgba(255,255,255,0.6);
+  padding:0.9rem 1.4rem;border-radius:8px;
+  text-decoration:none;font-weight:400;font-size:0.9rem;
+  border:1px solid rgba(255,255,255,0.12);transition:all 0.2s;
+}
+.btn-s:hover{color:#fff;border-color:rgba(255,255,255,0.3)}
+.hero-proof{
+  display:flex;align-items:center;gap:10px;
+  margin-top:2.5rem;
+  font-size:0.78rem;color:rgba(255,255,255,0.3);
+}
+.hero-proof-stars{color:#f39c12;font-size:0.85rem;letter-spacing:1px}
+
+/* CALCULATOR */
+.calc{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:16px;padding:28px;
+}
+.calc-head{
+  font-size:0.7rem;font-weight:500;letter-spacing:0.12em;
+  text-transform:uppercase;color:var(--bl);margin-bottom:20px;
+  display:flex;align-items:center;gap:6px;
+}
+.calc-row{margin-bottom:18px}
+.calc-lbl{
+  display:flex;justify-content:space-between;
+  font-size:0.78rem;color:rgba(255,255,255,0.4);
+  margin-bottom:8px;
+}
+.calc-lbl strong{color:#fff;font-weight:500}
+input[type=range]{
+  width:100%;height:3px;-webkit-appearance:none;appearance:none;
+  background:rgba(255,255,255,0.12);border-radius:2px;outline:none;cursor:pointer;
+}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;width:16px;height:16px;border-radius:50%;
+  background:var(--b);cursor:pointer;border:2px solid rgba(255,255,255,0.3);
+  transition:transform 0.15s;
+}
+input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
+.calc-result{
+  background:var(--b);border-radius:10px;padding:18px 20px;
+  margin-top:4px;display:flex;justify-content:space-between;align-items:center;
+}
+.calc-result-lbl{font-size:0.72rem;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.08em}
+.calc-result-val{font-family:var(--serif);font-size:2.2rem;color:#fff;line-height:1}
+.calc-result-sub{font-size:0.68rem;color:rgba(255,255,255,0.5);margin-top:3px}
+.calc-result-r{text-align:right}
+
+/* ─── TICKER ─── */
+.ticker{background:rgba(43,102,209,0.08);border-top:1px solid rgba(43,102,209,0.15);border-bottom:1px solid rgba(43,102,209,0.15);overflow:hidden;padding:12px 0}
+.ticker-track{display:flex;gap:48px;animation:scroll 30s linear infinite;width:max-content}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.ticker-item{display:flex;align-items:center;gap:8px;white-space:nowrap;font-size:0.78rem;color:rgba(255,255,255,0.5);font-weight:300}
+.ticker-item strong{color:var(--bl);font-weight:500}
+.ticker-sep{width:4px;height:4px;border-radius:50%;background:rgba(43,102,209,0.4)}
+
+/* ─── STATS ─── */
+.stats{background:var(--n2);display:grid;grid-template-columns:repeat(4,1fr)}
+.stat-cell{padding:2.5rem 2rem;text-align:center;border-right:1px solid rgba(255,255,255,0.05)}
+.stat-cell:last-child{border-right:none}
+.stat-n{font-family:var(--serif);font-size:2.6rem;font-style:italic;color:var(--bl);line-height:1;margin-bottom:6px}
+.stat-l{font-size:0.75rem;color:rgba(255,255,255,0.35);letter-spacing:0.04em;font-weight:300}
+
+/* ─── PROBLEM ─── */
+.problem{padding:7rem 5%;text-align:center}
+.section-pill{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--al);color:var(--a);
+  padding:0.3rem 1rem;border-radius:20px;
+  font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;
+  margin-bottom:1.2rem;
+}
+.problem h2{
+  font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,3rem);
+  font-weight:400;line-height:1.2;margin-bottom:1.2rem;
+  max-width:700px;margin-left:auto;margin-right:auto;
+}
+.problem p{font-size:1rem;color:#666;line-height:1.85;max-width:640px;margin:0 auto;font-weight:300}
+
+/* ─── BA ─── */
+.ba{padding:0 5% 6rem;max-width:960px;margin:0 auto}
+.ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.ba-card{border-radius:20px;padding:2rem;overflow:hidden}
+.ba-before{background:#fff5f5;border:1px solid #ffdddd}
+.ba-after{background:#f0faf6;border:1px solid #a8dcc5}
+.ba-lbl{font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:1.2rem;display:flex;align-items:center;gap:6px}
+.ba-before .ba-lbl{color:#c0392b}
+.ba-after .ba-lbl{color:var(--t)}
+.ba-card ul{list-style:none}
+.ba-card ul li{padding:0.65rem 0;border-bottom:1px solid rgba(0,0,0,0.05);font-size:0.88rem;line-height:1.5;display:flex;align-items:flex-start;gap:10px;color:#333}
+.ba-card ul li:last-child{border-bottom:none}
+.ba-icon{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;flex-shrink:0;margin-top:2px}
+.ba-x{background:#ffdddd;color:#c0392b}
+.ba-c{background:rgba(15,110,86,0.12);color:var(--t)}
+
+/* ─── PARALLAX ─── */
+.para{
+  background-size:cover;background-position:center;
+  background-attachment:fixed;
+  min-height:440px;display:flex;align-items:center;justify-content:center;
+  position:relative;
+}
+.para-ov{position:absolute;inset:0}
+.para-inner{position:relative;text-align:center;color:#fff;padding:3rem 5%;max-width:780px}
+.para-inner h2{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:400;margin-bottom:1rem;line-height:1.3;font-style:italic}
+.para-inner p{font-size:0.95rem;opacity:0.7;line-height:1.75;margin-bottom:1.8rem;font-weight:300}
+
+/* ─── HOW ─── */
+.how{background:var(--g);padding:6rem 5%;text-align:center}
+.how h2{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:400;margin-bottom:0.5rem}
+.how-sub{color:#888;margin-bottom:3.5rem;font-size:0.95rem;font-weight:300}
+.steps{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;max-width:800px;margin:0 auto}
+.step{background:#fff;border-radius:16px;padding:1.75rem;border:1px solid #eaecf0;text-align:left;transition:all 0.25s}
+.step:hover{border-color:var(--b);transform:translateY(-3px);box-shadow:0 12px 32px rgba(43,102,209,0.08)}
+.step-n{
+  width:36px;height:36px;border-radius:10px;
+  background:var(--n2);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-size:0.85rem;font-weight:600;margin-bottom:1rem;
+}
+.step h3{font-size:0.95rem;font-weight:600;margin-bottom:0.4rem;color:#0B1628}
+.step p{font-size:0.82rem;color:#777;line-height:1.65;font-weight:300}
+
+/* ─── TESTIMONIALS ─── */
+.testi{padding:6rem 0;text-align:center;background:#fff;overflow:hidden}
+.testi h2{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:400;margin-bottom:0.5rem}
+.testi-sub{color:#888;margin-bottom:3rem;font-size:0.9rem;font-weight:300}
+.tcarousel-wrap{overflow:hidden}
+.tcarousel{display:flex;gap:1.25rem;padding:1rem 2.5rem;transition:transform 0.65s cubic-bezier(0.25,0.46,0.45,0.94);width:max-content}
+.tcard{
+  background:#f8f9fc;border:1px solid #eaecf0;
+  border-radius:18px;padding:1.75rem;
+  width:300px;flex-shrink:0;text-align:left;
+  transition:all 0.25s;cursor:default;
+}
+.tcard:hover{transform:translateY(-4px);border-color:var(--bl);box-shadow:0 12px 32px rgba(43,102,209,0.08)}
+.tcard-stars{color:#f39c12;margin-bottom:0.75rem;font-size:0.85rem;letter-spacing:2px}
+.tcard q{font-size:0.85rem;color:#444;line-height:1.7;display:block;margin-bottom:1.2rem;font-style:italic;font-weight:300;quotes:"\AB""\BB"}
+.tcard-footer{display:flex;align-items:center;gap:10px}
+.tcard-av{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:0.78rem;color:#fff;flex-shrink:0}
+.tcard-name{font-weight:600;font-size:0.82rem;color:#0B1628}
+.tcard-role{font-size:0.72rem;color:#aaa;font-weight:300}
+.tcarousel-nav{display:flex;justify-content:center;gap:10px;margin-top:2rem}
+.tcarousel-nav button{
+  width:36px;height:36px;border-radius:50%;cursor:pointer;
+  font-size:1rem;transition:all 0.2s;
+}
+.tc-prev{border:1px solid #ddd;background:#fff;color:#333}
+.tc-prev:hover{border-color:var(--n2);background:var(--n2);color:#fff}
+.tc-next{border:none;background:var(--b);color:#fff}
+.tc-next:hover{background:#1a52b8}
+.testi-trust{
+  display:inline-flex;align-items:center;gap:8px;
+  background:#EEF3FC;border-radius:20px;padding:8px 18px;
+  font-size:0.78rem;color:#0B1628;font-weight:500;margin-top:1.5rem;
+}
+
+/* ─── PRICING ─── */
+.pricing{padding:6rem 5%;text-align:center}
+.pricing h2{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:400;margin-bottom:0.5rem}
+.pricing-sub{color:#888;margin-bottom:3.5rem;font-size:0.9rem;font-weight:300}
+.plans{display:flex;gap:1.25rem;justify-content:center;flex-wrap:wrap;max-width:1060px;margin:0 auto}
+.plan{
+  background:#fff;border:1px solid #eaecf0;border-radius:20px;
+  padding:2.25rem 1.75rem;flex:1;min-width:250px;max-width:310px;
+  position:relative;transition:all 0.25s;
+}
+.plan:hover{transform:translateY(-4px);box-shadow:0 20px 48px rgba(0,0,0,0.06)}
+.plan.pop{border-color:var(--b);border-width:1.5px}
+.pop-badge{
+  position:absolute;top:-12px;left:50%;transform:translateX(-50%);
+  background:var(--b);color:#fff;padding:3px 14px;
+  border-radius:20px;font-size:0.68rem;font-weight:600;white-space:nowrap;
+  letter-spacing:0.05em;text-transform:uppercase;
+}
+.plan-name{font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#bbb;margin-bottom:0.5rem}
+.plan-price{font-family:var(--serif);font-size:2.8rem;font-weight:400;color:#0B1628;line-height:1;font-style:italic}
+.plan-price sub{font-size:0.9rem;font-weight:400;color:#aaa;font-style:normal;vertical-align:baseline}
+.plan-desc{color:#888;font-size:0.8rem;margin:0.6rem 0 1.5rem;line-height:1.5;font-weight:300}
+.plan ul{list-style:none;text-align:left;margin-bottom:1.75rem}
+.plan ul li{padding:0.5rem 0;font-size:0.82rem;border-bottom:1px solid #f5f5f5;display:flex;align-items:flex-start;gap:8px;line-height:1.5;color:#444}
+.plan ul li:last-child{border-bottom:none}
+.li-ok{color:var(--t);font-size:11px;flex-shrink:0;margin-top:2px}
+.li-no{color:#ddd;font-size:11px;flex-shrink:0;margin-top:2px}
+.li-grey{color:#ccc}
+.plan-btn{
+  display:block;width:100%;padding:0.85rem;border-radius:10px;
+  text-align:center;text-decoration:none;font-weight:500;font-size:0.85rem;
+  background:#f4f6fb;color:#0B1628;transition:all 0.2s;border:none;cursor:pointer;
+  letter-spacing:0.01em;
+}
+.plan.pop .plan-btn{background:var(--b);color:#fff}
+.plan-btn:hover{opacity:0.82}
+
+/* ─── AIDE FISCALE ─── */
+.aide{background:var(--n2);padding:5rem 5%;text-align:center}
+.aide-inner{max-width:860px;margin:0 auto}
+.aide h2{font-family:var(--serif);font-size:clamp(1.5rem,2.5vw,2.2rem);font-weight:400;color:#fff;margin-bottom:0.75rem;font-style:italic}
+.aide-sub{color:rgba(255,255,255,0.45);font-size:0.9rem;margin-bottom:2.5rem;font-weight:300;line-height:1.7}
+.aide-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-bottom:1.5rem}
+.aide-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:1.5rem;text-align:left}
+.aide-card-badge{font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--bl);margin-bottom:0.75rem}
+.aide-card-title{font-size:0.9rem;font-weight:500;color:#fff;margin-bottom:0.4rem}
+.aide-card-desc{font-size:0.78rem;color:rgba(255,255,255,0.4);line-height:1.65;font-weight:300}
+.aide-card-amount{font-family:var(--serif);font-size:1.6rem;font-style:italic;color:var(--bl);margin-top:0.75rem}
+.aide-disclaimer{font-size:0.72rem;color:rgba(255,255,255,0.2);font-weight:300}
+
+/* ─── GUARANTEE ─── */
+.guarantee{background:linear-gradient(135deg,var(--t),#085041);padding:4.5rem 5%;text-align:center}
+.guarantee h2{font-family:var(--serif);font-size:1.9rem;font-weight:400;color:#fff;margin-bottom:1rem;font-style:italic}
+.guarantee p{max-width:620px;margin:0 auto;font-size:0.9rem;line-height:1.85;opacity:0.85;font-weight:300;color:#fff}
+.guarantee-pills{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2rem}
+.g-pill{display:flex;align-items:center;gap:7px;font-size:0.78rem;color:rgba(255,255,255,0.75);font-weight:300}
+
+/* ─── FAQ ─── */
+.faq{padding:6rem 5%;max-width:720px;margin:0 auto}
+.faq h2{font-family:var(--serif);font-size:clamp(1.5rem,2.5vw,2.2rem);font-weight:400;margin-bottom:0.5rem;text-align:center}
+.faq-sub{text-align:center;color:#888;margin-bottom:3rem;font-size:0.9rem;font-weight:300}
+.faq-item{border-bottom:1px solid #eee;padding:1.1rem 0}
+.faq-q{font-size:0.9rem;font-weight:500;color:#0B1628;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;user-select:none}
+.faq-q:hover{color:var(--b)}
+.faq-icon{color:var(--b);font-size:1.1rem;flex-shrink:0;transition:transform 0.25s;font-weight:300}
+.faq-a{font-size:0.85rem;color:#666;line-height:1.8;max-height:0;overflow:hidden;transition:max-height 0.35s ease,padding 0.2s;font-weight:300}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+.faq-item.open .faq-a{max-height:300px;padding-top:0.8rem}
+
+/* ─── CONTACT ─── */
+.contact{padding:6rem 5%;text-align:center;background:var(--g)}
+.contact h2{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:400;margin-bottom:0.5rem}
+.contact-sub{color:#888;margin-bottom:2.5rem;font-size:0.9rem;font-weight:300}
+.contact-form{max-width:480px;margin:0 auto;display:flex;flex-direction:column;gap:0.85rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:0.85rem}
+input,select,textarea{
+  padding:0.85rem 1rem;border:1px solid #e0e4ed;border-radius:8px;
+  font-size:0.88rem;font-family:var(--sans);
+  background:#fff;width:100%;color:#1a1a2e;
+  transition:border-color 0.2s;outline:none;
+}
+input:focus,select:focus,textarea:focus{border-color:var(--b)}
+input::placeholder,textarea::placeholder{color:#bbb;font-weight:300}
+textarea{min-height:90px;resize:vertical}
+.submit{
+  background:var(--b);color:#fff;padding:1rem;
+  border:none;border-radius:8px;font-size:0.9rem;font-weight:500;
+  font-family:var(--sans);cursor:pointer;transition:background 0.2s;
+  letter-spacing:0.01em;
+}
+.submit:hover{background:#1a52b8}
+.form-note{font-size:0.72rem;color:#bbb;font-weight:300}
+
+/* ─── STICKY ─── */
+.sticky{
+  position:fixed;bottom:0;left:0;right:0;z-index:400;
+  background:var(--n);border-top:1px solid rgba(43,102,209,0.2);
+  padding:12px 5%;display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  transform:translateY(100%);transition:transform 0.4s ease;
+}
+.sticky.show{transform:translateY(0)}
+.sticky-txt{font-size:0.82rem;color:rgba(255,255,255,0.6);font-weight:300}
+.sticky-txt strong{color:#fff;font-weight:500}
+.sticky-cta{background:var(--b);color:#fff;padding:0.55rem 1.3rem;border-radius:6px;text-decoration:none;font-weight:500;font-size:0.82rem;white-space:nowrap}
+
+/* ─── FOOTER ─── */
+footer{background:var(--n);padding:3rem 5%;overflow:hidden;position:relative}
+.footer-bg{position:absolute;right:-80px;top:50%;transform:translateY(-50%);opacity:0.03}
+.footer-inner{display:flex;flex-direction:column;align-items:center;gap:1rem;position:relative;text-align:center}
+.footer-logo{display:flex;align-items:center;gap:10px}
+.footer-wm{font-family:var(--sans);font-size:1.2rem;font-weight:600;color:#fff;letter-spacing:-0.5px}
+.footer-wm em{color:var(--bl);font-style:normal}
+.footer-sl{color:rgba(255,255,255,0.25);font-size:0.78rem;font-weight:300}
+.footer-links{display:flex;gap:1.5rem;flex-wrap:wrap;justify-content:center}
+.footer-links a{color:rgba(255,255,255,0.25);font-size:0.75rem;text-decoration:none;transition:color 0.2s;font-weight:300}
+.footer-links a:hover{color:var(--bl)}
+.footer-copy{color:rgba(255,255,255,0.12);font-size:0.68rem;font-weight:300}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:2.5rem}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .aide-cards{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  .ba-grid,.steps,.form-row{grid-template-columns:1fr}
+  .stat-cell{border-right:none;border-bottom:1px solid rgba(255,255,255,0.05)}
+  nav .nav-wa{display:none}
+  .hero{min-height:auto;padding:90px 5% 50px}
+}
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+.au{opacity:0;animation:fadeUp 0.7s ease forwards}
+.au1{animation-delay:0.1s}.au2{animation-delay:0.25s}.au3{animation-delay:0.4s}.au4{animation-delay:0.55s}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <svg width="32" height="32" viewBox="0 0 120 120">
+      <rect width="120" height="120" rx="20" fill="#2B66D1"/>
+      <path fill="white" fill-rule="evenodd" d="M22 18L48 18Q92 18 92 40Q92 62 48 62Q100 62 100 82Q100 102 48 102L22 102ZM48 26Q82 26 82 40Q82 54 48 54ZM48 70Q90 70 90 82Q90 94 48 94Z"/>
+    </svg>
+    <span class="nav-wordmark">bra<em>i</em>ve</span>
+  </a>
+  <div class="nav-r">
+    <a href="https://wa.me/33606929292?text=Bonjour%2C%20je%20voudrais%20un%20audit%20gratuit%20Braive%20!" class="nav-wa" target="_blank" rel="noopener">
+      <svg width="14" height="14" viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#25D366"/><path d="M22.9 9.1A9.7 9.7 0 0016 6.4a9.8 9.8 0 00-8.5 14.7L6 26l5.1-1.3a9.8 9.8 0 004.9 1.3 9.8 9.8 0 009.8-9.8 9.7 9.7 0 00-2.9-7.1zm-6.9 15a8.1 8.1 0 01-4.2-1.1l-.3-.2-3 .8.8-3-.2-.3a8.2 8.2 0 1114.9-4.4 8.2 8.2 0 01-8 8.2zm4.5-6.1c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1a6.5 6.5 0 01-1.9-1.2 7.2 7.2 0 01-1.3-1.6c-.1-.2 0-.4.1-.5l.4-.4.2-.4v-.4l-.7-1.8c-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3a2.8 2.8 0 00-.9 2.1 4.9 4.9 0 001 2.6 11.2 11.2 0 004.3 3.8c.6.3 1.1.4 1.4.5.6.2 1.1.1 1.5-.1.5-.2 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1l-.3-.2z" fill="white"/></svg>
+      WhatsApp
+    </a>
+    <a href="#contact" class="nav-cta">Audit gratuit</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-noise"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-grid">
+    <div>
+      <div class="hero-eyebrow au au1"><span class="hero-eyebrow-dot"></span>Système IA pour artisans français</div>
+      <h1 class="au au2">Pendant que tu es<br>sur le chantier,<br><em>ton téléphone<br>travaille pour toi.</em></h1>
+      <p class="hero-sub au au3">Braive répond à tes prospects, collecte tes avis Google et remplit ton agenda sans que tu lèves le petit doigt.</p>
+      <div class="hero-actions au au4">
+        <a href="#contact" class="btn-p">Je veux mes premiers leads <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <a href="#comment" class="btn-s">Comment ça marche ?</a>
+      </div>
+      <div class="hero-proof au au4">
+        <span class="hero-proof-stars">★★★★★</span>
+        Premiers résultats garantis en 30 jours · Sans engagement
+      </div>
+    </div>
+
+    <div class="calc au au3">
+      <div class="calc-head">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--bl)"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        Calcule tes pertes cette semaine
+      </div>
+      <div class="calc-row">
+        <div class="calc-lbl">Appels manqués par semaine <strong id="va">5</strong></div>
+        <input type="range" min="1" max="20" value="5" id="ra" oninput="calc()"/>
+      </div>
+      <div class="calc-row">
+        <div class="calc-lbl">Valeur moyenne d'un chantier <strong id="vc">800€</strong></div>
+        <input type="range" min="200" max="3000" step="100" value="800" id="rc" oninput="calc()"/>
+      </div>
+      <div class="calc-row">
+        <div class="calc-lbl">Taux de conversion sans réponse <strong id="vt">20%</strong></div>
+        <input type="range" min="5" max="50" value="20" id="rt" oninput="calc()"/>
+      </div>
+      <div class="calc-result">
+        <div>
+          <div class="calc-result-lbl">Tu perds chaque mois</div>
+          <div class="calc-result-val" id="cm">320€</div>
+          <div class="calc-result-sub">Braive Starter = 290€/mois · ROI garanti</div>
+        </div>
+        <div class="calc-result-r">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="rgba(255,255,255,0.3)"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker" style="background:var(--n2)">
+  <div class="ticker-track">
+    <div class="ticker-item"><span class="ticker-sep"></span>Patrick L. — Plombier Lyon — <strong>14 devis en 3 semaines</strong></div>
+    <div class="ticker-item"><span class="ticker-sep"></span>Marie R. — Coiffeuse Bordeaux — <strong>4 → 31 avis Google</strong></div>
+    <div class="ticker-item"><span class="ticker-sep"></span>Thomas D. — Électricien Paris — <strong>3 chantiers dès le 1er mois</strong></div>
+    <div class="ticker-item"><span class="ticker-sep"></span>Jean-Marc V. — Menuisier Nantes — <strong>agenda plein 3 semaines à l'avance</strong></div>
+    <div class="ticker-item"><span class="ticker-sep"></span>Sophie B. — Restauratrice Bordeaux — <strong>+22% de CA en 2 mois</strong></div>
+    <div class="ticker-item"><span class="ticker-sep"></span>Rémi D. — Électricien Marseille — <strong>plus de clients que jamais</strong></div>
+    <div class="ticker-item"><span class="ticker-sep"></span>Patrick L. — Plombier Lyon — <strong>14 devis en 3 semaines</strong></div>
+    <div class="ticker-item"><span class="ticker-sep"></span>Marie R. — Coiffeuse Bordeaux — <strong>4 → 31 avis Google</strong></div>
+    <div class="ticker-item"><span class="ticker-sep"></span>Thomas D. — Électricien Paris — <strong>3 chantiers dès le 1er mois</strong></div>
+    <div class="ticker-item"><span class="ticker-sep"></span>Jean-Marc V. — Menuisier Nantes — <strong>agenda plein 3 semaines à l'avance</strong></div>
+    <div class="ticker-item"><span class="ticker-sep"></span>Sophie B. — Restauratrice Bordeaux — <strong>+22% de CA en 2 mois</strong></div>
+    <div class="ticker-item"><span class="ticker-sep"></span>Rémi D. — Électricien Marseille — <strong>plus de clients que jamais</strong></div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat-cell"><div class="stat-n">2 min</div><div class="stat-l">Délai de réponse automatique</div></div>
+  <div class="stat-cell"><div class="stat-n">+38%</div><div class="stat-l">Leads qualifiés en moyenne</div></div>
+  <div class="stat-cell"><div class="stat-n">30 j</div><div class="stat-l">Premiers résultats garantis</div></div>
+  <div class="stat-cell"><div class="stat-n">5 j</div><div class="stat-l">Mise en place complète</div></div>
+</div>
+
+<!-- PROBLEM -->
+<section class="problem">
+  <div class="section-pill">Le problème</div>
+  <h2>Tu perds des chantiers sans même le savoir.</h2>
+  <p>Ton téléphone sonne pendant que tu travailles. Le prospect n'attend pas, il appelle le suivant. Ce n'est pas un problème de personnel. C'est un problème de système. Et on a la solution.</p>
+</section>
+
+<!-- AVANT APRÈS -->
+<div class="ba">
+  <div class="ba-grid">
+    <div class="ba-card ba-before">
+      <div class="ba-lbl">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="#c0392b"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+        Avant Braive
+      </div>
+      <ul>
+        <li><span class="ba-icon ba-x">✗</span>Appels manqués sur le chantier</li>
+        <li><span class="ba-icon ba-x">✗</span>Prospects perdus en 5 minutes</li>
+        <li><span class="ba-icon ba-x">✗</span>3 avis Google après 10 ans</li>
+        <li><span class="ba-icon ba-x">✗</span>Soirées perdues sur les devis</li>
+        <li><span class="ba-icon ba-x">✗</span>Concurrent moins bon mais mieux placé</li>
+      </ul>
+    </div>
+    <div class="ba-card ba-after">
+      <div class="ba-lbl">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="#0F6E56"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Avec Braive
+      </div>
+      <ul>
+        <li><span class="ba-icon ba-c">✓</span>Réponse automatique en 2 minutes</li>
+        <li><span class="ba-icon ba-c">✓</span>Zéro prospect perdu — 24h/24</li>
+        <li><span class="ba-icon ba-c">✓</span>Avis collectés après chaque chantier</li>
+        <li><span class="ba-icon ba-c">✓</span>Devis générés en quelques clics</li>
+        <li><span class="ba-icon ba-c">✓</span>Tu apparais en premier sur Google</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- PARALLAX 1 -->
+<div class="para" style="background-image:url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1600&q=80')">
+  <div class="para-ov" style="background:rgba(6,9,15,0.8)"></div>
+  <div class="para-inner">
+    <h2>Un appel manqué = un chantier perdu.<br>Combien tu en perds par semaine ?</h2>
+    <p>Braive répond à ta place en moins de 2 minutes. Même quand tu es sur le toit.</p>
+    <a href="#contact" class="btn-p" style="display:inline-flex">Je veux mes premiers leads cette semaine</a>
+  </div>
+</div>
+
+<!-- HOW -->
+<section class="how" id="comment">
+  <div class="section-pill" style="background:#EEF3FC;color:#0B1628">Comment ça marche</div>
+  <h2>Installé en 5 jours. Tu ne fais rien.</h2>
+  <p class="how-sub">On s'occupe de tout. Tu continues tes chantiers.</p>
+  <div class="steps">
+    <div class="step"><div class="step-n">1</div><h3>Audit gratuit 20 min</h3><p>On analyse ta présence digitale et on identifie exactement ce que tu perds chaque semaine.</p></div>
+    <div class="step"><div class="step-n">2</div><h3>Installation en 5 jours</h3><p>On installe ton système complet — Google, WhatsApp, avis automatiques. Tu n'as rien à faire.</p></div>
+    <div class="step"><div class="step-n">3</div><h3>Résultats en 30 jours</h3><p>Tu reçois un rapport mensuel : leads captés, avis générés, appels récupérés. Tout en chiffres.</p></div>
+    <div class="step"><div class="step-n">4</div><h3>On gère, tu travailles</h3><p>Le système tourne tout seul. Toi tu fais ce que tu sais faire. Ton agenda se remplit.</p></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi">
+  <div class="section-pill">Ils nous font confiance</div>
+  <h2>Ce que disent nos artisans</h2>
+  <p class="testi-sub">Des résultats réels, des artisans comme toi.</p>
+  <div class="tcarousel-wrap">
+    <div class="tcarousel" id="tc">
+      <div class="tcard"><div class="tcard-stars">★★★★★</div><q>En 3 semaines j'ai reçu 14 demandes de devis. D'habitude j'en ai 3 ou 4 par mois. Le système répond même la nuit.</q><div class="tcard-footer"><div class="tcard-av" style="background:#2B66D1">PL</div><div><div class="tcard-name">Patrick L.</div><div class="tcard-role">Plombier — Lyon</div></div></div></div>
+      <div class="tcard"><div class="tcard-stars">★★★★★</div><q>Avant j'avais 4 avis Google. Après 2 mois avec Braive j'en ai 31. Mes nouveaux clients me disent tous qu'ils m'ont trouvé sur Google.</q><div class="tcard-footer"><div class="tcard-av" style="background:#0F6E56">MR</div><div><div class="tcard-name">Marie R.</div><div class="tcard-role">Coiffeuse — Bordeaux</div></div></div></div>
+      <div class="tcard"><div class="tcard-stars">★★★★★</div><q>Je perdais des clients parce que je ne pouvais pas décrocher. Maintenant le système gère tout. 3 nouveaux chantiers signés le premier mois.</q><div class="tcard-footer"><div class="tcard-av" style="background:#e67e22">TD</div><div><div class="tcard-name">Thomas D.</div><div class="tcard-role">Électricien — Paris</div></div></div></div>
+      <div class="tcard"><div class="tcard-stars">★★★★★</div><q>Mon chiffre d'affaires a augmenté de 22% en 2 mois. Je n'aurais jamais cru que quelque chose d'aussi simple puisse changer autant de choses.</q><div class="tcard-footer"><div class="tcard-av" style="background:#8e44ad">SB</div><div><div class="tcard-name">Sophie B.</div><div class="tcard-role">Restauratrice — Bordeaux</div></div></div></div>
+      <div class="tcard"><div class="tcard-stars">★★★★★</div><q>L'installation a pris 4 jours. Dès la première semaine j'avais 5 nouveaux contacts. Maintenant mon agenda est plein 3 semaines à l'avance.</q><div class="tcard-footer"><div class="tcard-av" style="background:#c0392b">JM</div><div><div class="tcard-name">Jean-Marc V.</div><div class="tcard-role">Menuisier — Nantes</div></div></div></div>
+      <div class="tcard"><div class="tcard-stars">★★★★★</div><q>Je suis électricien depuis 18 ans, jamais eu de site ni rien. En 1 mois avec Braive j'ai plus de clients que jamais. Incroyable.</q><div class="tcard-footer"><div class="tcard-av" style="background:#27ae60">RD</div><div><div class="tcard-name">Rémi D.</div><div class="tcard-role">Électricien — Marseille</div></div></div></div>
+    </div>
+  </div>
+  <div class="tcarousel-nav">
+    <button class="tc-prev" onclick="tcPrev()">‹</button>
+    <button class="tc-next" onclick="tcNext()">›</button>
+  </div>
+  <div class="testi-trust">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="#2B66D1"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+    Résultats garantis · Premiers artisans testeurs · France entière
+  </div>
+</section>
+
+<!-- PARALLAX 2 -->
+<div class="para" style="background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80')">
+  <div class="para-ov" style="background:rgba(8,40,28,0.82)"></div>
+  <div class="para-inner">
+    <h2>"Mon concurrent moins bon que moi apparaît avant moi sur Google."</h2>
+    <p>C'est ce que nous disent 9 artisans sur 10 au premier appel. On règle ça en 5 jours.</p>
+  </div>
+</div>
+
+<!-- PRICING -->
+<section class="pricing" id="tarifs">
+  <div class="section-pill" style="background:#E1F5EE;color:#085041">Tarifs</div>
+  <h2>Simple, transparent, sans engagement.</h2>
+  <p class="pricing-sub">Un chantier récupéré rembourse ton abonnement. Le reste c'est du bénéfice.</p>
+  <div class="plans">
+    <div class="plan">
+      <div class="plan-name">Starter</div>
+      <div class="plan-price">290<sub>€/mois</sub></div>
+      <div class="plan-desc">Pour ne plus perdre de prospects</div>
+      <ul>
+        <li><span class="li-ok">✓</span>Réponse auto appels manqués (SMS)</li>
+        <li><span class="li-ok">✓</span>Optimisation Google My Business</li>
+        <li><span class="li-ok">✓</span>Système avis automatique post-chantier</li>
+        <li><span class="li-ok">✓</span>Rapport mensuel chiffré</li>
+        <li><span class="li-no">–</span><span class="li-grey">Page web SEO locale</span></li>
+        <li><span class="li-no">–</span><span class="li-grey">Publication réseaux sociaux</span></li>
+        <li><span class="li-no">–</span><span class="li-grey">Google Ads géré</span></li>
+      </ul>
+      <a href="#contact" class="plan-btn">Commencer</a>
+    </div>
+    <div class="plan pop">
+      <div class="pop-badge">Le plus choisi</div>
+      <div class="plan-name">Pro</div>
+      <div class="plan-price">490<sub>€/mois</sub></div>
+      <div class="plan-desc">Pour dominer ton marché local</div>
+      <ul>
+        <li><span class="li-ok">✓</span>Tout le Starter</li>
+        <li><span class="li-ok">✓</span>Page web locale optimisée SEO</li>
+        <li><span class="li-ok">✓</span>Publication réseaux 3x par semaine</li>
+        <li><span class="li-ok">✓</span>Rapport mensuel détaillé</li>
+        <li><span class="li-ok">✓</span>Support WhatsApp direct</li>
+        <li><span class="li-no">–</span><span class="li-grey">Chatbot qualification prospects</span></li>
+        <li><span class="li-no">–</span><span class="li-grey">Google Ads géré</span></li>
+      </ul>
+      <a href="#contact" class="plan-btn">Commencer</a>
+    </div>
+    <div class="plan">
+      <div class="plan-name">Domination</div>
+      <div class="plan-price">790<sub>€/mois</sub></div>
+      <div class="plan-desc">Pour tout automatiser</div>
+      <ul>
+        <li><span class="li-ok">✓</span>Tout le Pro</li>
+        <li><span class="li-ok">✓</span>Chatbot qualification prospects</li>
+        <li><span class="li-ok">✓</span>Google Ads local géré</li>
+        <li><span class="li-ok">✓</span>Appel stratégique mensuel 30 min</li>
+        <li><span class="li-ok">✓</span>Accès prioritaire support</li>
+        <li><span class="li-ok">✓</span>Rapport avancé avec recommandations</li>
+        <li><span class="li-ok">✓</span>Optimisation continue chaque mois</li>
+      </ul>
+      <a href="#contact" class="plan-btn">Commencer</a>
+    </div>
+  </div>
+</section>
+
+<!-- AIDE FISCALE -->
+<section class="aide">
+  <div class="aide-inner">
+    <div class="section-pill" style="background:rgba(43,102,209,0.15);color:var(--bl)">Financement & aides</div>
+    <h2>Votre abonnement peut vous coûter<br>moins de 150€ par mois.</h2>
+    <p class="aide-sub">Entre les aides de l'État et la déductibilité fiscale, Braive est l'un des investissements les plus rentables que vous puissiez faire pour votre activité.</p>
+    <div class="aide-cards">
+      <div class="aide-card">
+        <div class="aide-card-badge">Aide gouvernementale</div>
+        <div class="aide-card-title">Chèque France Num</div>
+        <div class="aide-card-desc">Aide de l'État pour les artisans et commerçants qui adoptent des outils digitaux. Braive est éligible. Demande en 10 minutes sur francenum.gouv.fr</div>
+        <div class="aide-card-amount">500€ remboursés</div>
+      </div>
+      <div class="aide-card">
+        <div class="aide-card-badge">Avantage fiscal</div>
+        <div class="aide-card-title">Charge professionnelle déductible</div>
+        <div class="aide-card-desc">Votre abonnement Braive est déductible à 100% de vos charges. À 30% d'imposition, votre abonnement Starter vous revient réellement à ~200€/mois net.</div>
+        <div class="aide-card-amount">~90€ économisés/mois</div>
+      </div>
+    </div>
+    <p class="aide-disclaimer">Vérifiez les conditions d'éligibilité avec votre comptable ou sur francenum.gouv.fr. Les aides peuvent évoluer.</p>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<section class="guarantee">
+  <h2>Garantie premier mois sans risque.</h2>
+  <p>Si après 30 jours tu n'obtiens pas au moins 5 contacts qualifiés et 3 nouveaux avis Google, on continue gratuitement jusqu'à ce que ce soit le cas. Ma réputation vaut plus que ton abonnement.</p>
+  <div class="guarantee-pills">
+    <div class="g-pill"><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(255,255,255,0.6)"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>Sans engagement</div>
+    <div class="g-pill"><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(255,255,255,0.6)"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Résultats en 30 jours</div>
+    <div class="g-pill"><svg width="14" height="14" viewBox="0 0 24 24" fill="rgba(255,255,255,0.6)"><path d="M5 13l4 4L19 7"/></svg>5 leads + 3 avis garantis</div>
+  </div>
+</section>
+
+<!-- PARALLAX 3 -->
+<div class="para" style="background-image:url('https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1600&q=80')">
+  <div class="para-ov" style="background:rgba(6,9,15,0.84)"></div>
+  <div class="para-inner">
+    <h2>Pendant que tu lis ça,<br>un artisan perd un prospect.</h2>
+    <p>20 minutes d'audit gratuit. Zéro engagement. On te dit exactement ce que tu perds chaque semaine.</p>
+    <a href="#contact" class="btn-p" style="display:inline-flex;background:#fff;color:#0B1628">Réserver mon audit gratuit</a>
+  </div>
+</div>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="section-pill" style="display:block;text-align:center;background:#EEF3FC;color:#0B1628">Questions fréquentes</div>
+  <h2>On répond à tout</h2>
+  <p class="faq-sub">Des doutes ? C'est normal. Voici les vraies réponses.</p>
+  <div class="faq-item" onclick="faq(this)"><div class="faq-q">C'est quoi exactement le "système IA" ?<span class="faq-icon">+</span></div><div class="faq-a">C'est un assistant automatique qui répond à tes prospects à ta place en moins de 2 minutes, 24h/24. Quand quelqu'un appelle et que tu ne décroches pas, il reçoit un SMS personnalisé avec ton nom et tes infos. Le prospect ne sait pas que c'est automatique. Toi, tu reçois une notification et tu rappelles quand tu as le temps.</div></div>
+  <div class="faq-item" onclick="faq(this)"><div class="faq-q">Je ne suis pas à l'aise avec la technologie, c'est compliqué ?<span class="faq-icon">+</span></div><div class="faq-a">Non. On installe tout pour toi en 5 jours. Tu n'as rien à faire techniquement. Après l'installation, tu reçois juste des notifications sur ton téléphone quand un prospect répond. On a des clients de 60 ans qui n'ont jamais eu de site web et ça fonctionne parfaitement.</div></div>
+  <div class="faq-item" onclick="faq(this)"><div class="faq-q">Est-ce que ça marche vraiment sans engagement ?<span class="faq-icon">+</span></div><div class="faq-a">Oui, sans engagement signifie que tu peux arrêter quand tu veux, sans frais ni justification. On n'a pas peur de ça parce qu'on sait que les résultats parlent d'eux-mêmes.</div></div>
+  <div class="faq-item" onclick="faq(this)"><div class="faq-q">Combien de temps avant les premiers résultats ?<span class="faq-icon">+</span></div><div class="faq-a">Les premiers contacts qualifiés arrivent généralement dans la première semaine. Les avis Google commencent à s'accumuler dès le premier chantier terminé. En 30 jours, tu as un rapport complet avec tous tes chiffres.</div></div>
+  <div class="faq-item" onclick="faq(this)"><div class="faq-q">Et si ça ne marche pas pour moi ?<span class="faq-icon">+</span></div><div class="faq-a">C'est pour ça qu'on a une garantie claire : si tu n'obtiens pas au moins 5 contacts qualifiés et 3 nouveaux avis Google dans les 30 premiers jours, on continue gratuitement. Pas de frais supplémentaires, pas de discussion.</div></div>
+  <div class="faq-item" onclick="faq(this)"><div class="faq-q">Mon abonnement est-il éligible aux aides de l'État ?<span class="faq-icon">+</span></div><div class="faq-a">Oui. Le Chèque France Num (500€) est accessible aux artisans qui adoptent des outils digitaux comme Braive. De plus, ton abonnement est 100% déductible en charges professionnelles. Parles-en à ton comptable.</div></div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-pill" style="background:#EEF3FC;color:#0B1628">Audit gratuit</div>
+  <h2>20 minutes pour tout changer.</h2>
+  <p class="contact-sub">On analyse ta situation, on t'explique exactement ce que tu perds. Gratuit, sans engagement.</p>
+  <form class="contact-form" action="https://formspree.io/f/mrerprkg" method="POST">
+    <div class="form-row">
+      <input type="text" name="prenom" placeholder="Ton prénom" required/>
+      <input type="text" name="metier" placeholder="Ton métier (plombier…)" required/>
+    </div>
+    <div class="form-row">
+      <input type="text" name="ville" placeholder="Ta ville" required/>
+      <input type="tel" name="telephone" placeholder="Ton téléphone" required/>
+    </div>
+    <input type="email" name="email" placeholder="Ton email" required/>
+    <select name="budget">
+      <option value="">Ton budget mensuel</option>
+      <option>290€/mois — Starter</option>
+      <option>490€/mois — Pro</option>
+      <option>790€/mois — Domination</option>
+      <option>Je veux d'abord l'audit gratuit</option>
+    </select>
+    <button type="submit" class="submit">Je veux mes premiers leads cette semaine →</button>
+    <p class="form-note">Sans engagement · Réponse sous 2h · 100% confidentiel</p>
+  </form>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-bg">
+    <svg width="320" height="320" viewBox="0 0 120 120">
+      <path fill="white" fill-rule="evenodd" d="M22 18L48 18Q92 18 92 40Q92 62 48 62Q100 62 100 82Q100 102 48 102L22 102ZM48 26Q82 26 82 40Q82 54 48 54ZM48 70Q90 70 90 82Q90 94 48 94Z"/>
+    </svg>
+  </div>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <svg width="28" height="28" viewBox="0 0 120 120">
+        <rect width="120" height="120" rx="18" fill="rgba(255,255,255,0.08)"/>
+        <path fill="white" fill-rule="evenodd" d="M22 18L48 18Q92 18 92 40Q92 62 48 62Q100 62 100 82Q100 102 48 102L22 102ZM48 26Q82 26 82 40Q82 54 48 54ZM48 70Q90 70 90 82Q90 94 48 94Z"/>
+      </svg>
+      <span class="footer-wm">bra<em>i</em>ve</span>
+    </div>
+    <p class="footer-sl">Toujours là pour toi · 2026</p>
+    <div class="footer-links">
+      <a href="mailto:contact@braive-agency.fr">contact@braive-agency.fr</a>
+      <a href="#tarifs">Tarifs</a>
+      <a href="#contact">Audit gratuit</a>
+    </div>
+    <p class="footer-copy">© 2026 Braive · Tous droits réservés</p>
+  </div>
+</footer>
+
+<!-- STICKY -->
+<div class="sticky" id="sticky">
+  <div class="sticky-txt"><strong>Braive</strong> — Premiers leads garantis en 30 jours</div>
+  <a href="#contact" class="sticky-cta">Audit gratuit →</a>
+</div>
+
+<script>
+function calc(){
+  const a=+document.getElementById('ra').value;
+  const c=+document.getElementById('rc').value;
+  const t=+document.getElementById('rt').value/100;
+  const m=Math.round(a*4*c*t);
+  document.getElementById('va').textContent=a;
+  document.getElementById('vc').textContent=c+'€';
+  document.getElementById('vt').textContent=Math.round(t*100)+'%';
+  document.getElementById('cm').textContent=m.toLocaleString('fr-FR')+'€';
+}
+calc();
+
+let cs=0;
+const cw=316;
+const tot=6;
+function maxS(){return Math.max(0,tot-Math.floor(window.innerWidth/cw))}
+function updTC(){document.getElementById('tc').style.transform=`translateX(-${cs*cw}px)`}
+function tcNext(){cs=cs>=maxS()?0:cs+1;updTC()}
+function tcPrev(){cs=cs<=0?maxS():cs-1;updTC()}
+setInterval(tcNext,4000);
+
+function faq(el){
+  const open=el.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+  if(!open)el.classList.add('open');
+}
+
+const sticky=document.getElementById('sticky');
+window.addEventListener('scroll',()=>{
+  sticky.classList.toggle('show',window.scrollY>600);
+});
+
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t)t.scrollIntoView({behavior:'smooth'});
+  });
+});
+</script>
+</body>
+</html>
