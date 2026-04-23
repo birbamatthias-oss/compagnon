@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Braive installe un système IA qui répond à tes prospects, collecte tes avis Google et remplit ton agenda — sans que tu lèves le petit doigt."/>
+  <title>Braive — Toujours là pour toi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet"/>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --navy:#0B1628;
+      --dark:#070E1A;
+      --deeper:#040810;
+      --blue:#2B66D1;
+      --blue-lt:#6BA3FF;
+      --blue-pale:#EEF3FC;
+      --teal:#0F6E56;
+      --teal-lt:#E1F5EE;
+      --amber:#854F0B;
+      --amber-lt:#FAEEDA;
+      --gray:#f6f8fc;
+      --white-5:rgba(255,255,255,0.05);
+      --white-8:rgba(255,255,255,0.08);
+      --white-10:rgba(255,255,255,0.10);
+      --white-20:rgba(255,255,255,0.20);
+      --white-40:rgba(255,255,255,0.40);
+      --white-60:rgba(255,255,255,0.60);
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:'DM Sans',system-ui,sans-serif;background:var(--deeper);color:#fff;overflow-x:hidden}
+
+    /* ─── NAV ─── */
+    nav{
+      position:fixed;top:0;left:0;right:0;z-index:100;
+      background:rgba(4,8,16,0.85);backdrop-filter:blur(20px);
+      border-bottom:1px solid var(--white-5);
+    }
+    .nav-inner{
+      max-width:1200px;margin:0 auto;padding:0 5%;
+      display:flex;justify-content:space-between;align-items:center;height:72px;
+    }
+    .nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+    .nav-logo-wordmark{font-family:'Outfit',sans-serif;font-size:1.4rem;font-weight:800;color:#fff;letter-spacing:-0.5px}
+    .nav-logo-wordmark span{color:var(--blue)}
+    .nav-right{display:flex;align-items:center;gap:1rem}
+    .nav-phone{
+      display:flex;align-items:center;justify-content:center;
+      width:40px;height:40px;border-radius:50%;
+      background:var(--white-5);border:1px solid var(--white-8);
+      color:#fff;text-decoration:none;transition:all .2s;
+    }
+    .nav-phone:hover{background:var(--blue);border-color:var(--blue)}
+    .nav-cta{
+      background:var(--blue);color:#fff;
+      padding:.6rem 1.4rem;border-radius:10px;
+      text-decoration:none;font-weight:600;font-size:.9rem;
+      border:1px solid rgba(107,163,255,0.3);transition:all .2s;
+      font-family:'Outfit',sans-serif;
+    }
+    .nav-cta:hover{background:#1a52b8;transform:translateY(-1px)}
+
+    /* ─── HERO ─── */
+    .hero{
+      min-height:100vh;display:flex;align-items:center;
+      padding:100px 5% 80px;
+      background:radial-gradient(ellipse 80% 60% at 50% 0%, rgba(43,102,209,0.12) 0%, transparent 70%),
+                 radial-gradient(ellipse 40% 40% at 80% 60%, rgba(43,102,209,0.06) 0%, transparent 60%),
+                 var(--deeper);
+      position:relative;overflow:hidden;
+    }
+    .hero::before{
+      content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);
+      width:800px;height:800px;
+      background:radial-gradient(circle, rgba(43,102,209,0.08) 0%, transparent 60%);
+      pointer-events:none;
+    }
+    .hero-inner{
+      max-width:1200px;margin:0 auto;width:100%;
+      display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;
+    }
+    .hero-badge{
+      display:inline-flex;align-items:center;gap:.5rem;
+      background:rgba(43,102,209,0.12);border:1px solid rgba(107,163,255,0.25);
+      color:var(--blue-lt);padding:.4rem 1rem;border-radius:20px;
+      font-size:.8rem;font-weight:600;margin-bottom:1.5rem;
+      letter-spacing:.06em;text-transform:uppercase;
+    }
+    .hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--blue-lt);animation:pulse-dot 2s infinite}
+    @keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+    .hero h1{
+      font-family:'Outfit',sans-serif;
+      font-size:clamp(2.4rem,4.5vw,3.8rem);font-weight:800;
+      line-height:1.1;letter-spacing:-1.5px;margin-bottom:1.5rem;
+    }
+    .hero h1 .grad{
+      background:linear-gradient(135deg,#6BA3FF 0%,#2B66D1 50%,#6BA3FF 100%);
+      -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+    }
+    .hero-sub{font-size:1.1rem;color:var(--white-60);line-height:1.75;margin-bottom:2.5rem;max-width:480px;font-weight:300}
+    .hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+    .btn-hero-primary{
+      background:var(--blue);color:#fff;padding:1rem 2rem;
+      border-radius:12px;text-decoration:none;font-weight:700;font-size:1rem;
+      transition:all .2s;border:1px solid rgba(107,163,255,0.3);
+      font-family:'Outfit',sans-serif;
+    }
+    .btn-hero-primary:hover{background:#1a52b8;transform:translateY(-2px);box-shadow:0 8px 30px rgba(43,102,209,0.4)}
+    .btn-hero-secondary{
+      background:var(--white-5);color:#fff;padding:1rem 2rem;
+      border-radius:12px;text-decoration:none;font-weight:600;font-size:1rem;
+      transition:all .2s;border:1px solid var(--white-10);
+      display:flex;align-items:center;gap:.5rem;
+    }
+    .btn-hero-secondary:hover{background:var(--white-8);border-color:var(--white-20)}
+    .hero-trust{display:flex;flex-direction:column;gap:.2rem;margin-top:2rem}
+    .hero-trust-stars{color:#f39c12;letter-spacing:-1px;font-size:.9rem}
+    .hero-trust-text{font-size:.8rem;color:var(--white-40)}
+    .hero-trust-text strong{color:var(--white-60)}
+
+    /* ─── HERO DEMO (right side) ─── */
+    .hero-demo{position:relative}
+    .hero-demo-glow{
+      position:absolute;inset:-40px;
+      background:radial-gradient(ellipse, rgba(43,102,209,0.15) 0%, transparent 70%);
+      pointer-events:none;border-radius:50%;
+    }
+    .phone-mockup{
+      background:var(--navy);border-radius:32px;
+      border:6px solid rgba(255,255,255,0.08);
+      overflow:hidden;box-shadow:0 40px 80px rgba(0,0,0,0.5),0 0 0 1px rgba(255,255,255,0.05);
+      max-width:340px;margin:0 auto;position:relative;z-index:1;
+    }
+    .phone-status{
+      background:var(--dark);padding:10px 16px;
+      display:flex;align-items:center;gap:10px;
+      border-bottom:1px solid var(--white-5);
+    }
+    .phone-avatar{
+      width:32px;height:32px;border-radius:50%;
+      background:linear-gradient(135deg,var(--blue),#1a52b8);
+      display:flex;align-items:center;justify-content:center;
+      font-size:.7rem;font-weight:700;color:#fff;flex-shrink:0;
+    }
+    .phone-info{flex:1}
+    .phone-name{font-size:.8rem;font-weight:600;color:#fff}
+    .phone-online{font-size:.7rem;color:#4ade80}
+    .phone-msgs{
+      padding:14px 12px;background:rgba(11,14,20,0.8);
+      min-height:340px;display:flex;flex-direction:column;gap:8px;
+      overflow:hidden;
+    }
+    .msg{max-width:82%;padding:8px 12px;border-radius:14px;font-size:.78rem;line-height:1.5}
+    .msg.in{background:rgba(255,255,255,0.08);color:#fff;align-self:flex-start;border-radius:4px 14px 14px 14px}
+    .msg.out{background:var(--blue);color:#fff;align-self:flex-end;border-radius:14px 4px 14px 14px}
+    .msg.bot{background:rgba(43,102,209,0.2);border:1px solid rgba(43,102,209,0.3);color:#e0eaff;align-self:flex-start;border-radius:4px 14px 14px 14px}
+    .msg-time{font-size:.65rem;color:var(--white-40);text-align:center;margin:4px 0}
+    .typing{display:flex;align-items:center;gap:4px;padding:8px 12px;background:rgba(255,255,255,0.06);border-radius:4px 14px 14px 14px;align-self:flex-start;max-width:60px}
+    .typing span{width:6px;height:6px;border-radius:50%;background:var(--blue-lt);animation:typing-bounce 1.2s infinite}
+    .typing span:nth-child(2){animation-delay:.2s}
+    .typing span:nth-child(3){animation-delay:.4s}
+    @keyframes typing-bounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}}
+    .phone-input{
+      background:var(--dark);padding:10px 12px;
+      display:flex;align-items:center;gap:8px;
+      border-top:1px solid var(--white-5);
+    }
+    .phone-input-field{
+      flex:1;background:rgba(255,255,255,0.06);border:1px solid var(--white-8);
+      border-radius:20px;padding:7px 14px;font-size:.75rem;color:var(--white-40);
+      font-family:inherit;
+    }
+    .notification-badge{
+      position:absolute;top:-12px;right:-12px;
+      background:var(--blue);color:#fff;
+      font-size:.65rem;font-weight:700;padding:4px 10px;
+      border-radius:20px;border:2px solid var(--deeper);
+      font-family:'Outfit',sans-serif;text-transform:uppercase;letter-spacing:.05em;
+      animation:float-badge 3s ease-in-out infinite;
+    }
+    @keyframes float-badge{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+
+    /* ─── STATS BAR ─── */
+    .stats{background:var(--navy);border-top:1px solid var(--white-5);border-bottom:1px solid var(--white-5)}
+    .stats-inner{
+      max-width:1200px;margin:0 auto;
+      display:grid;grid-template-columns:repeat(4,1fr);
+    }
+    .stat{
+      padding:2.5rem 2rem;text-align:center;
+      border-right:1px solid var(--white-5);
+    }
+    .stat:last-child{border-right:none}
+    .stat-num{font-family:'Outfit',sans-serif;font-size:2.2rem;font-weight:800;color:var(--blue-lt)}
+    .stat-label{font-size:.8rem;color:var(--white-40);margin-top:.4rem;text-transform:uppercase;letter-spacing:.06em}
+
+    /* ─── CALCULATEUR VIRAL ─── */
+    .calc-section{
+      padding:7rem 5%;
+      background:radial-gradient(ellipse 60% 60% at 50% 50%, rgba(43,102,209,0.06) 0%, transparent 70%),
+                 var(--deeper);
+      position:relative;overflow:hidden;
+    }
+    .calc-section::before{
+      content:'';position:absolute;top:0;left:0;right:0;bottom:0;
+      background:repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255,255,255,0.015) 40px),
+                 repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255,255,255,0.015) 40px);
+      pointer-events:none;
+    }
+    .calc-inner{max-width:1000px;margin:0 auto;position:relative;z-index:1}
+    .section-label{
+      display:inline-block;font-size:.7rem;font-weight:700;
+      text-transform:uppercase;letter-spacing:.15em;
+      color:var(--blue-lt);margin-bottom:1rem;
+    }
+    .calc-title{
+      font-family:'Outfit',sans-serif;
+      font-size:clamp(2rem,4vw,3rem);font-weight:800;
+      line-height:1.1;letter-spacing:-1px;margin-bottom:.75rem;
+    }
+    .calc-title em{font-style:italic;color:var(--blue-lt)}
+    .calc-sub{color:var(--white-40);font-size:1rem;margin-bottom:3rem;font-weight:300}
+    .calc-card{
+      background:rgba(11,22,40,0.8);backdrop-filter:blur(20px);
+      border:1px solid var(--white-8);border-radius:24px;
+      padding:2.5rem;box-shadow:0 40px 80px rgba(0,0,0,0.3);
+    }
+    .calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+    .calc-inputs{display:flex;flex-direction:column;gap:1.5rem}
+    .calc-slider-group{}
+    .calc-slider-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.6rem}
+    .calc-slider-label{font-size:.85rem;font-weight:500;color:var(--white-60)}
+    .calc-slider-val{
+      font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:800;color:var(--blue-lt);
+    }
+    input[type=range]{
+      width:100%;-webkit-appearance:none;appearance:none;
+      height:4px;border-radius:4px;
+      background:linear-gradient(to right, var(--blue) 0%, var(--blue) var(--pct,50%), rgba(255,255,255,0.1) var(--pct,50%), rgba(255,255,255,0.1) 100%);
+      outline:none;cursor:pointer;
+    }
+    input[type=range]::-webkit-slider-thumb{
+      -webkit-appearance:none;width:18px;height:18px;
+      border-radius:50%;background:var(--blue-lt);
+      border:2px solid var(--deeper);cursor:pointer;
+      box-shadow:0 0 10px rgba(43,102,209,0.5);
+      transition:transform .15s;
+    }
+    input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
+    .calc-result{
+      background:linear-gradient(135deg,rgba(43,102,209,0.15) 0%, rgba(43,102,209,0.05) 100%);
+      border:1px solid rgba(43,102,209,0.3);
+      border-radius:16px;padding:2rem;display:flex;flex-direction:column;justify-content:center;
+      position:relative;overflow:hidden;
+    }
+    .calc-result::before{
+      content:'';position:absolute;top:-40px;right:-40px;
+      width:150px;height:150px;
+      background:radial-gradient(circle, rgba(43,102,209,0.2), transparent 70%);
+      pointer-events:none;
+    }
+    .calc-result-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--blue-lt);margin-bottom:.5rem}
+    .calc-result-amount{
+      font-family:'Outfit',sans-serif;font-size:3.5rem;font-weight:800;
+      color:#fff;line-height:1;margin-bottom:.25rem;
+      transition:all .3s ease;
+    }
+    .calc-result-period{font-size:.85rem;color:var(--white-40);margin-bottom:1.5rem}
+    .calc-result-detail{
+      display:flex;flex-direction:column;gap:.5rem;
+      padding:.75rem;background:rgba(0,0,0,0.2);border-radius:10px;margin-bottom:1.5rem;
+    }
+    .calc-result-row{display:flex;justify-content:space-between;font-size:.8rem}
+    .calc-result-row .lbl{color:var(--white-40)}
+    .calc-result-row .val{color:var(--white-60);font-weight:500}
+    .calc-cta{
+      display:block;background:var(--blue);color:#fff;
+      padding:.85rem 1.5rem;border-radius:10px;
+      text-align:center;text-decoration:none;font-weight:700;font-size:.9rem;
+      transition:all .2s;font-family:'Outfit',sans-serif;border:none;cursor:pointer;
+    }
+    .calc-cta:hover{background:#1a52b8;transform:translateY(-1px)}
+    .calc-disclaimer{font-size:.7rem;color:var(--white-20);margin-top:1rem;text-align:center}
+
+    /* ─── FEATURES STICKY SCROLL ─── */
+    .features{padding:7rem 5%;border-top:1px solid var(--white-5)}
+    .features-inner{
+      max-width:1200px;margin:0 auto;
+      display:grid;grid-template-columns:1fr 2fr;gap:5rem;align-items:start;
+    }
+    .features-sticky{position:sticky;top:120px}
+    .features-sticky h2{
+      font-family:'Outfit',sans-serif;
+      font-size:clamp(2rem,3.5vw,2.8rem);font-weight:800;
+      line-height:1.1;letter-spacing:-1px;margin-bottom:1rem;
+    }
+    .features-sticky h2 em{font-style:italic;color:var(--blue-lt)}
+    .features-sticky p{color:var(--white-40);font-size:.95rem;line-height:1.7;font-weight:300}
+    .features-canvas{
+      width:100%;aspect-ratio:1;border-radius:24px;
+      overflow:hidden;border:1px solid var(--white-5);
+      position:relative;margin-top:2rem;
+      background:var(--navy);
+    }
+    canvas#feat-canvas{display:block;width:100%;height:100%}
+    .features-list{display:flex;flex-direction:column;gap:1.25rem}
+    .feat-card{
+      background:rgba(11,22,40,0.6);backdrop-filter:blur(10px);
+      border:1px solid var(--white-5);border-radius:20px;
+      padding:1.75rem 2rem;
+      transition:all .3s;cursor:default;
+      opacity:0;transform:translateX(20px);
+    }
+    .feat-card.visible{opacity:1;transform:translateX(0)}
+    .feat-card:hover{border-color:rgba(43,102,209,0.4);background:rgba(43,102,209,0.05)}
+    .feat-card-header{display:flex;align-items:flex-start;gap:1rem;margin-bottom:.75rem}
+    .feat-icon{
+      width:44px;height:44px;border-radius:12px;
+      background:rgba(43,102,209,0.1);border:1px solid rgba(43,102,209,0.2);
+      display:flex;align-items:center;justify-content:center;flex-shrink:0;
+      transition:all .3s;
+    }
+    .feat-card:hover .feat-icon{background:rgba(43,102,209,0.2);border-color:rgba(43,102,209,0.4)}
+    .feat-card-title{
+      font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;
+      color:#fff;text-transform:uppercase;letter-spacing:.04em;margin-bottom:.25rem;
+    }
+    .feat-card-desc{font-size:.88rem;color:var(--white-40);line-height:1.65;font-weight:300}
+
+    /* ─── BEFORE / AFTER ─── */
+    .ba-section{
+      padding:7rem 5%;
+      background:var(--navy);border-top:1px solid var(--white-5);
+    }
+    .ba-inner{max-width:1100px;margin:0 auto}
+    .ba-header{text-align:center;margin-bottom:3.5rem}
+    .ba-header h2{
+      font-family:'Outfit',sans-serif;
+      font-size:clamp(1.8rem,3vw,2.6rem);font-weight:800;
+      letter-spacing:-1px;margin-bottom:.75rem;
+    }
+    .ba-header p{color:var(--white-40);font-size:1rem;font-weight:300}
+    .ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+    .ba-card{
+      background:rgba(4,8,16,0.6);backdrop-filter:blur(10px);
+      border-radius:20px;padding:2rem;border:1px solid var(--white-5);
+    }
+    .ba-card.before{border-top:3px solid rgba(231,76,60,0.5)}
+    .ba-card.after{border-top:3px solid rgba(15,110,86,0.8)}
+    .ba-card-label{
+      font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:800;
+      text-transform:uppercase;letter-spacing:.15em;margin-bottom:1.25rem;
+      display:flex;align-items:center;gap:.5rem;
+    }
+    .ba-card.before .ba-card-label{color:#e74c3c}
+    .ba-card.after .ba-card-label{color:#4ade80}
+    .ba-card ul{list-style:none;display:flex;flex-direction:column;gap:.75rem}
+    .ba-card ul li{
+      font-size:.9rem;line-height:1.5;
+      padding:.6rem .75rem;border-radius:8px;
+      display:flex;align-items:flex-start;gap:.6rem;
+    }
+    .ba-card.before ul li{background:rgba(231,76,60,0.06);color:rgba(255,255,255,0.55)}
+    .ba-card.after ul li{background:rgba(15,110,86,0.08);color:rgba(255,255,255,0.75)}
+    .ba-icon{flex-shrink:0;margin-top:1px;font-size:.9rem}
+
+    /* ─── TESTIMONIALS ─── */
+    .testi{padding:7rem 5%;border-top:1px solid var(--white-5)}
+    .testi-inner{max-width:1200px;margin:0 auto}
+    .testi-header{text-align:center;margin-bottom:3rem}
+    .testi-header h2{
+      font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,3vw,2.4rem);
+      font-weight:800;letter-spacing:-1px;margin-bottom:.5rem;
+    }
+    .testi-header p{color:var(--white-40);font-size:.95rem;font-weight:300}
+    .testi-track-wrap{overflow:hidden;position:relative}
+    .testi-track-wrap::before,.testi-track-wrap::after{
+      content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none;
+    }
+    .testi-track-wrap::before{left:0;background:linear-gradient(to right,var(--deeper),transparent)}
+    .testi-track-wrap::after{right:0;background:linear-gradient(to left,var(--deeper),transparent)}
+    .testi-track{
+      display:flex;gap:1.25rem;padding:.5rem 0;
+      transition:transform .6s cubic-bezier(.4,0,.2,1);
+    }
+    .testi-card{
+      background:rgba(11,22,40,0.8);backdrop-filter:blur(10px);
+      border:1px solid var(--white-5);border-radius:20px;
+      padding:1.75rem;width:300px;flex-shrink:0;
+    }
+    .testi-stars{color:#f39c12;font-size:.85rem;margin-bottom:.85rem;letter-spacing:1px}
+    .testi-text{
+      font-size:.88rem;color:rgba(255,255,255,0.65);
+      line-height:1.75;margin-bottom:1.25rem;font-style:italic;font-weight:300;
+    }
+    .testi-author{display:flex;align-items:center;gap:.75rem}
+    .testi-avatar{
+      width:38px;height:38px;border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+      font-weight:700;font-size:.8rem;color:#fff;flex-shrink:0;
+    }
+    .testi-name{font-size:.85rem;font-weight:600;color:#fff}
+    .testi-role{font-size:.75rem;color:var(--white-40)}
+    .testi-nav{display:flex;justify-content:center;gap:.75rem;margin-top:2rem}
+    .testi-btn{
+      width:40px;height:40px;border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+      border:1px solid var(--white-10);background:var(--white-5);
+      color:#fff;cursor:pointer;font-size:1.1rem;transition:all .2s;
+    }
+    .testi-btn:hover{background:var(--blue);border-color:var(--blue)}
+
+    /* ─── PRICING ─── */
+    .pricing{
+      padding:7rem 5%;
+      background:var(--navy);border-top:1px solid var(--white-5);
+    }
+    .pricing-inner{max-width:1100px;margin:0 auto}
+    .pricing-header{text-align:center;margin-bottom:3.5rem}
+    .pricing-header h2{
+      font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,3vw,2.6rem);
+      font-weight:800;letter-spacing:-1px;margin-bottom:.75rem;
+    }
+    .pricing-header p{color:var(--white-40);font-size:1rem;font-weight:300}
+    .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+    .plan{
+      background:rgba(4,8,16,0.7);backdrop-filter:blur(10px);
+      border:1px solid var(--white-8);border-radius:20px;
+      padding:2rem;position:relative;transition:all .3s;
+    }
+    .plan:hover{border-color:rgba(43,102,209,0.3);transform:translateY(-4px)}
+    .plan.popular{
+      border-color:rgba(43,102,209,0.5);
+      background:rgba(43,102,209,0.05);
+    }
+    .plan.popular:hover{border-color:var(--blue)}
+    .popular-tag{
+      position:absolute;top:-12px;left:50%;transform:translateX(-50%);
+      background:var(--blue);color:#fff;
+      font-family:'Outfit',sans-serif;font-size:.65rem;font-weight:800;
+      text-transform:uppercase;letter-spacing:.1em;
+      padding:.3rem 1rem;border-radius:20px;white-space:nowrap;
+    }
+    .plan-name{
+      font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:700;
+      text-transform:uppercase;letter-spacing:.12em;color:var(--white-40);
+      margin-bottom:.5rem;
+    }
+    .plan-price{
+      font-family:'Outfit',sans-serif;font-size:2.8rem;font-weight:800;
+      color:#fff;line-height:1;margin-bottom:.25rem;
+    }
+    .plan-price span{font-size:.95rem;font-weight:400;color:var(--white-40)}
+    .plan-fiscal{
+      font-size:.72rem;color:var(--teal);background:rgba(15,110,86,0.12);
+      border:1px solid rgba(15,110,86,0.2);border-radius:6px;
+      padding:3px 8px;display:inline-block;margin-bottom:.75rem;
+    }
+    .plan-desc{color:var(--white-40);font-size:.85rem;margin-bottom:1.5rem;font-weight:300;line-height:1.5}
+    .plan-features{list-style:none;display:flex;flex-direction:column;gap:.6rem;margin-bottom:1.75rem}
+    .plan-features li{font-size:.85rem;display:flex;align-items:flex-start;gap:.6rem;padding:.4rem 0;border-bottom:1px solid var(--white-5)}
+    .plan-features li:last-child{border-bottom:none}
+    .plan-features li.yes{color:rgba(255,255,255,.7)}
+    .plan-features li.no{color:var(--white-20)}
+    .check-yes{color:#4ade80;flex-shrink:0;margin-top:1px}
+    .check-no{color:var(--white-20);flex-shrink:0;margin-top:1px}
+    .plan-btn{
+      display:block;width:100%;padding:.85rem;border-radius:10px;
+      text-align:center;text-decoration:none;font-weight:700;font-size:.9rem;
+      transition:all .2s;font-family:'Outfit',sans-serif;cursor:pointer;border:none;
+    }
+    .plan-btn.primary{background:var(--blue);color:#fff}
+    .plan-btn.primary:hover{background:#1a52b8}
+    .plan-btn.secondary{background:var(--white-5);color:rgba(255,255,255,.7);border:1px solid var(--white-8)}
+    .plan-btn.secondary:hover{background:var(--white-8)}
+
+    /* ─── AIDE FISCALE ─── */
+    .fiscal{
+      padding:5rem 5%;
+      background:linear-gradient(180deg, var(--navy) 0%, var(--deeper) 100%);
+      border-top:1px solid var(--white-5);
+    }
+    .fiscal-inner{max-width:900px;margin:0 auto;text-align:center}
+    .fiscal h2{
+      font-family:'Outfit',sans-serif;font-size:clamp(1.6rem,3vw,2.2rem);
+      font-weight:800;letter-spacing:-1px;margin-bottom:.75rem;margin-top:1rem;
+    }
+    .fiscal-sub{color:var(--white-40);font-size:.9rem;margin-bottom:2.5rem;font-weight:300;max-width:600px;margin-left:auto;margin-right:auto;line-height:1.7}
+    .fiscal-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+    .fiscal-card{
+      background:rgba(255,255,255,0.03);border:1px solid var(--white-5);
+      border-radius:16px;padding:1.5rem;text-align:left;
+    }
+    .fiscal-card-tag{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--blue-lt);margin-bottom:.75rem}
+    .fiscal-card-title{font-size:.9rem;font-weight:700;color:#fff;margin-bottom:.5rem}
+    .fiscal-card-text{font-size:.8rem;color:var(--white-40);line-height:1.65;font-weight:300}
+    .fiscal-card-amount{font-family:'Outfit',sans-serif;font-size:1.7rem;font-weight:800;color:var(--blue-lt);margin-top:.75rem}
+    .fiscal-note{font-size:.7rem;color:var(--white-20)}
+
+    /* ─── GARANTIE ─── */
+    .guarantee{
+      padding:5rem 5%;
+      background:linear-gradient(135deg, var(--teal) 0%, #0a5240 100%);
+      border-top:1px solid rgba(255,255,255,0.1);position:relative;overflow:hidden;
+    }
+    .guarantee::before{
+      content:'';position:absolute;top:-100px;right:-100px;
+      width:400px;height:400px;
+      background:radial-gradient(circle, rgba(255,255,255,0.05), transparent 60%);
+      pointer-events:none;
+    }
+    .guarantee-inner{max-width:700px;margin:0 auto;text-align:center;position:relative}
+    .guarantee h2{
+      font-family:'Outfit',sans-serif;font-size:clamp(1.6rem,3vw,2.2rem);
+      font-weight:800;letter-spacing:-1px;margin-bottom:1rem;color:#fff;
+    }
+    .guarantee p{font-size:1rem;color:rgba(255,255,255,.8);line-height:1.8;font-weight:300}
+
+    /* ─── FAQ ─── */
+    .faq{padding:7rem 5%;border-top:1px solid var(--white-5)}
+    .faq-inner{max-width:780px;margin:0 auto}
+    .faq-header{text-align:center;margin-bottom:3rem}
+    .faq-header h2{
+      font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,3vw,2.4rem);
+      font-weight:800;letter-spacing:-1px;text-transform:uppercase;font-style:italic;
+      margin-bottom:.5rem;
+    }
+    .faq-list{
+      background:rgba(11,22,40,0.6);backdrop-filter:blur(10px);
+      border:1px solid var(--white-5);border-radius:20px;
+      overflow:hidden;
+    }
+    .faq-item{border-bottom:1px solid var(--white-5)}
+    .faq-item:last-child{border-bottom:none}
+    .faq-q{
+      width:100%;display:flex;justify-content:space-between;align-items:center;
+      padding:1.25rem 1.75rem;background:transparent;border:none;
+      color:#fff;text-align:left;cursor:pointer;
+      font-family:'DM Sans',sans-serif;font-size:.95rem;font-weight:600;
+      transition:background .2s;gap:1rem;
+    }
+    .faq-q:hover{background:rgba(255,255,255,0.02)}
+    .faq-q.open{background:rgba(43,102,209,0.05)}
+    .faq-icon{
+      width:28px;height:28px;border-radius:50%;
+      border:1px solid var(--white-10);
+      display:flex;align-items:center;justify-content:center;
+      flex-shrink:0;transition:all .3s;color:var(--white-40);font-size:1rem;
+    }
+    .faq-q.open .faq-icon{background:var(--blue);border-color:var(--blue);color:#fff;transform:rotate(45deg)}
+    .faq-a{
+      max-height:0;overflow:hidden;transition:max-height .35s ease;
+    }
+    .faq-a-inner{padding:0 1.75rem 1.25rem;font-size:.9rem;color:var(--white-60);line-height:1.75;font-weight:300}
+
+    /* ─── CONTACT ─── */
+    .contact{
+      padding:7rem 5%;
+      background:var(--navy);border-top:1px solid var(--white-5);
+    }
+    .contact-inner{max-width:640px;margin:0 auto;text-align:center}
+    .contact-inner h2{
+      font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,3.5vw,2.6rem);
+      font-weight:800;letter-spacing:-1px;margin-bottom:.5rem;
+      text-transform:uppercase;font-style:italic;
+    }
+    .contact-inner h2 span{color:var(--blue-lt)}
+    .contact-inner>p{color:var(--white-40);font-size:.95rem;margin-bottom:2.5rem;font-weight:300;line-height:1.65}
+    .contact-form{
+      background:rgba(4,8,16,0.7);backdrop-filter:blur(10px);
+      border:1px solid var(--white-5);border-radius:24px;
+      padding:2.5rem;display:flex;flex-direction:column;gap:1rem;text-align:left;
+    }
+    .contact-form label{
+      display:block;font-size:.7rem;font-weight:700;
+      text-transform:uppercase;letter-spacing:.12em;
+      color:var(--blue-lt);margin-bottom:.4rem;
+    }
+    .contact-form input,
+    .contact-form select,
+    .contact-form textarea{
+      width:100%;background:rgba(255,255,255,0.04);
+      border:1px solid var(--white-8);border-radius:12px;
+      padding:.85rem 1rem;font-size:.9rem;color:#fff;
+      font-family:'DM Sans',sans-serif;transition:border-color .2s;outline:none;
+    }
+    .contact-form input:focus,
+    .contact-form select:focus,
+    .contact-form textarea:focus{border-color:rgba(43,102,209,0.5)}
+    .contact-form select{cursor:pointer}
+    .contact-form select option{background:var(--navy)}
+    .contact-form textarea{min-height:100px;resize:vertical}
+    .contact-submit{
+      background:var(--blue);color:#fff;
+      padding:1rem;border:none;border-radius:12px;
+      font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;
+      cursor:pointer;transition:all .2s;
+    }
+    .contact-submit:hover{background:#1a52b8;transform:translateY(-1px);box-shadow:0 8px 30px rgba(43,102,209,0.3)}
+    .contact-note{font-size:.75rem;color:var(--white-20);text-align:center;margin-top:.5rem}
+
+    /* ─── FOOTER ─── */
+    footer{
+      background:var(--deeper);border-top:1px solid var(--white-5);
+      padding:3rem 5%;text-align:center;position:relative;overflow:hidden;
+    }
+    footer::before{
+      content:'';position:absolute;left:-50px;top:50%;transform:translateY(-50%);
+      opacity:.04;pointer-events:none;
+    }
+    .footer-logo{display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:1rem}
+    .footer-wordmark{font-family:'Outfit',sans-serif;font-size:1.3rem;font-weight:800;color:#fff}
+    .footer-wordmark span{color:var(--blue-lt)}
+    footer p{color:var(--white-20);font-size:.82rem}
+
+    /* ─── PARALLAX ─── */
+    .parallax{
+      min-height:380px;display:flex;align-items:center;justify-content:center;
+      position:relative;overflow:hidden;
+    }
+    .parallax-bg{
+      position:absolute;inset:0;background-size:cover;background-position:center;
+      background-attachment:fixed;
+    }
+    .parallax-overlay{position:absolute;inset:0}
+    .parallax-content{position:relative;text-align:center;padding:3rem 5%;max-width:750px;color:#fff}
+    .parallax-content h2{
+      font-family:'Outfit',sans-serif;font-size:clamp(1.6rem,3vw,2.2rem);
+      font-weight:800;letter-spacing:-1px;margin-bottom:1rem;line-height:1.2;
+    }
+    .parallax-content p{font-size:1rem;opacity:.8;margin-bottom:2rem;line-height:1.7;font-weight:300}
+    .btn-white{
+      background:#fff;color:var(--navy);
+      padding:.9rem 2rem;border-radius:10px;
+      text-decoration:none;font-weight:800;font-size:.95rem;
+      font-family:'Outfit',sans-serif;transition:all .2s;display:inline-block;
+    }
+    .btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(255,255,255,0.2)}
+
+    /* ─── SCROLL REVEAL ─── */
+    .reveal{opacity:0;transform:translateY(30px);transition:opacity .6s ease, transform .6s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .reveal-delay-1{transition-delay:.1s}
+    .reveal-delay-2{transition-delay:.2s}
+    .reveal-delay-3{transition-delay:.3s}
+
+    /* ─── RESPONSIVE ─── */
+    @media(max-width:900px){
+      .hero-inner{grid-template-columns:1fr;gap:3rem}
+      .hero-demo{display:none}
+      .stats-inner{grid-template-columns:repeat(2,1fr)}
+      .stat{border-right:none;border-bottom:1px solid var(--white-5)}
+      .stat:nth-child(odd){border-right:1px solid var(--white-5)}
+      .stat:nth-child(3),.stat:nth-child(4){border-bottom:none}
+      .calc-grid{grid-template-columns:1fr}
+      .features-inner{grid-template-columns:1fr}
+      .features-sticky{position:static}
+      .features-canvas{display:none}
+      .ba-grid{grid-template-columns:1fr}
+      .plans{grid-template-columns:1fr;max-width:400px;margin-left:auto;margin-right:auto}
+      .fiscal-cards{grid-template-columns:1fr}
+    }
+    @media(max-width:600px){
+      .hero{padding:90px 5% 60px}
+      .hero h1{font-size:2rem}
+      .stats-inner{grid-template-columns:1fr 1fr}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <svg width="36" height="36" viewBox="0 0 120 120">
+        <rect width="120" height="120" rx="22" fill="#0B1628"/>
+        <path fill="white" fill-rule="evenodd" d="M22 18L48 18Q92 18 92 40Q92 62 48 62Q100 62 100 82Q100 102 48 102L22 102ZM48 26Q82 26 82 40Q82 54 48 54ZM48 70Q90 70 90 82Q90 94 48 94Z"/>
+      </svg>
+      <div class="nav-logo-wordmark">bra<span>i</span>ve</div>
+    </a>
+    <div class="nav-right">
+      <a href="tel:0606929292" class="nav-phone" aria-label="Appeler">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 3 3.6 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.3 1.2.4 2.5.6 3.9.6.6 0 1 .4 1 1V21c0 .6-.4 1-1 1C10.3 22 2 13.7 2 3c0-.6.4-1 1-1h4.5c.6 0 1 .4 1 1 0 1.4.2 2.7.6 3.9.1.4 0 .8-.3 1.1l-2.2 2.2z"/></svg>
+      </a>
+      <a href="#contact" class="nav-cta">Audit gratuit</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        Système IA pour artisans & PME françaises
+      </div>
+      <h1>Pendant que tu<br>travailles, ton<br><span class="grad">téléphone travaille.</span></h1>
+      <p class="hero-sub">Braive répond à tes prospects en 2 minutes, collecte tes avis Google et remplit ton agenda — sans que tu lèves le petit doigt.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-hero-primary">Je veux mes premiers leads →</a>
+        <a href="#comment" class="btn-hero-secondary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          Comment ça marche
+        </a>
+      </div>
+      <div class="hero-trust"><div style="display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;margin-top:1.75rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,0.07)"><span style="font-size:.78rem;color:rgba(255,255,255,0.35);letter-spacing:.06em;">✓ Sans engagement</span><span style="font-size:.78rem;color:rgba(255,255,255,0.35);letter-spacing:.06em;">✓ Installé en 5 jours</span><span style="font-size:.78rem;color:rgba(255,255,255,0.35);letter-spacing:.06em;">✓ Résultats en 30 jours</span></div>
+        
+        
+      </div>
+    </div>
+    <div class="hero-demo">
+      <div class="hero-demo-glow"></div>
+      <div class="phone-mockup">
+        <div class="notification-badge">Réponse en 2 min</div>
+        <div class="phone-status">
+          <div class="phone-avatar">B</div>
+          <div class="phone-info">
+            <div class="phone-name">Braive — Assistant de Patrick</div>
+            <div class="phone-online">● En ligne · Répond automatiquement</div>
+          </div>
+        </div>
+        <div class="phone-msgs" id="chat-msgs">
+          <div class="msg-time">Aujourd'hui 14h23 — Patrick est sur le chantier</div>
+        </div>
+        <div class="phone-input">
+          <div class="phone-input-field">Répondre...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat"><div class="stat-num">2 min</div><div class="stat-label">Réponse automatique</div></div>
+    <div class="stat"><div class="stat-num">+38%</div><div class="stat-label">Leads qualifiés</div></div>
+    <div class="stat"><div class="stat-num">30 j</div><div class="stat-label">Premiers résultats</div></div>
+    <div class="stat"><div class="stat-num">5 j</div><div class="stat-label">Installation complète</div></div>
+  </div>
+</div>
+
+<!-- CALCULATEUR VIRAL -->
+<section class="calc-section">
+  <div class="calc-inner">
+    <div class="section-label">📊 Calculateur de perte</div>
+    <h2 class="calc-title reveal">Combien tu perds<br><em>chaque mois</em> sans le savoir ?</h2>
+    <p class="calc-sub reveal reveal-delay-1">Déplace les curseurs. Vois les euros partir en temps réel.</p>
+    <div class="calc-card reveal reveal-delay-2">
+      <div class="calc-grid">
+        <div class="calc-inputs">
+          <div class="calc-slider-group">
+            <div class="calc-slider-header">
+              <span class="calc-slider-label">📞 Appels manqués par semaine</span>
+              <span class="calc-slider-val" id="val-calls">8 appels</span>
+            </div>
+            <input type="range" id="slider-calls" min="1" max="30" value="8" oninput="updateCalc()"/>
+          </div>
+          <div class="calc-slider-group">
+            <div class="calc-slider-header">
+              <span class="calc-slider-label">💶 Valeur moyenne d'un chantier</span>
+              <span class="calc-slider-val" id="val-chantier">800 €</span>
+            </div>
+            <input type="range" id="slider-chantier" min="100" max="5000" step="50" value="800" oninput="updateCalc()"/>
+          </div>
+          <div class="calc-slider-group">
+            <div class="calc-slider-header">
+              <span class="calc-slider-label">% Prospects perdus sans réponse rapide</span>
+              <span class="calc-slider-val" id="val-pct">80%</span>
+            </div>
+            <input type="range" id="slider-pct" min="20" max="100" step="5" value="80" oninput="updateCalc()"/>
+          </div>
+          <div style="margin-top:.5rem;padding:.85rem 1rem;background:rgba(255,255,255,0.03);border:1px solid var(--white-5);border-radius:12px;font-size:.8rem;color:var(--white-40);line-height:1.6;font-weight:300">
+            <strong style="color:var(--white-60);font-weight:500">Source :</strong> HubSpot France 2024 — un prospect non rappelé en moins de 5 minutes a 80% de chances d'aller chez le concurrent.
+          </div>
+        </div>
+        <div class="calc-result">
+          <div class="calc-result-label">Tu perds chaque mois</div>
+          <div class="calc-result-amount" id="result-amount">5 120 €</div>
+          <div class="calc-result-period">de chiffre d'affaires manqué</div>
+          <div class="calc-result-detail">
+            <div class="calc-result-row"><span class="lbl">Prospects perdus/mois</span><span class="val" id="res-prospects">26</span></div>
+            <div class="calc-result-row"><span class="lbl">Braive Starter coûte</span><span class="val">290 €/mois</span></div>
+            <div class="calc-result-row"><span class="lbl">ROI si 1 chantier récupéré</span><span class="val" id="res-roi" style="color:#4ade80">+176%</span></div>
+          </div>
+          <a href="#contact" class="calc-cta">Récupérer ces chantiers →</a>
+          <div class="calc-disclaimer">Estimation basée sur tes paramètres. Résultats variables.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARALLAX 1 -->
+<div class="parallax">
+  <div class="parallax-bg" style="background-image:url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1600&q=80')"></div>
+  <div class="parallax-overlay" style="background:rgba(7,14,26,0.78)"></div>
+  <div class="parallax-content">
+    <h2>Un appel manqué = un chantier perdu.<br>Combien tu en perds par semaine ?</h2>
+    <p>Braive répond à ta place en moins de 2 minutes. Même quand tu es sous le tableau électrique.</p>
+    <a href="#contact" class="btn-white">Audit gratuit — 20 minutes</a>
+  </div>
+</div>
+
+<!-- FEATURES STICKY SCROLL -->
+<section class="features" id="comment">
+  <div class="features-inner">
+    <div class="features-sticky">
+      <div class="section-label">Ce qu'on installe</div>
+      <h2>Technologie<br><em>Artisan.</em></h2>
+      <p>Pas de jargon tech. Pas de formation. On installe, tu travailles, le système tourne.</p>
+      <div class="features-canvas">
+        <canvas id="feat-canvas"></canvas>
+      </div>
+    </div>
+    <div class="features-list">
+      <div class="feat-card">
+        <div class="feat-card-header">
+          <div class="feat-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2B66D1" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.12 12 19.79 19.79 0 01.07 3.39A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div>
+            <div class="feat-card-title">Réponse automatique appels manqués</div>
+          </div>
+        </div>
+        <div class="feat-card-desc">Chaque appel manqué déclenche un SMS automatique en moins de 2 minutes. Le prospect sait que tu vas le rappeler. Tu ne perds plus personne sur le chantier.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-card-header">
+          <div class="feat-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2B66D1" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <div class="feat-card-title">Google My Business optimisé</div>
+          </div>
+        </div>
+        <div class="feat-card-desc">On optimise et gère ta fiche Google chaque mois. Horaires, photos, posts, réponses aux avis. Tu apparais avant tes concurrents sur Google Maps.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-card-header">
+          <div class="feat-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2B66D1" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div>
+            <div class="feat-card-title">Avis Google en pilote automatique</div>
+          </div>
+        </div>
+        <div class="feat-card-desc">Après chaque chantier, ton client reçoit automatiquement un SMS pour laisser un avis. Aucun effort de ta part. 30 avis en 2 mois. La réalité de nos clients.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-card-header">
+          <div class="feat-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2B66D1" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
+          <div>
+            <div class="feat-card-title">Rapport mensuel chiffré</div>
+          </div>
+        </div>
+        <div class="feat-card-desc">Chaque mois tu reçois un rapport clair : nombre de leads captés, avis générés, appels récupérés. Tout en chiffres. Tu vois exactement ce que le système t'a rapporté.</div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-card-header">
+          <div class="feat-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2B66D1" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          </div>
+          <div>
+            <div class="feat-card-title">Chatbot qualification prospects <span style="font-size:.7rem;background:rgba(43,102,209,0.2);color:#6BA3FF;padding:2px 8px;border-radius:20px;margin-left:.25rem;text-transform:none;letter-spacing:0">Pro & Domination</span></div>
+          </div>
+        </div>
+        <div class="feat-card-desc">Un chatbot qualifie tes prospects 24h/24 sur WhatsApp. Il collecte leurs besoins, leur zone géographique, leur budget. Tu reçois un brief prêt à rappeler.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BEFORE / AFTER -->
+<section class="ba-section">
+  <div class="ba-inner">
+    <div class="ba-header reveal">
+      <div class="section-label">La différence</div>
+      <h2>Avant et après Braive.</h2>
+      <p>Ce que tes concurrents voient. Ce que toi tu vis chaque soir.</p>
+    </div>
+    <div class="ba-grid reveal reveal-delay-1">
+      <div class="ba-card before">
+        <div class="ba-card-label">
+          <span>✕</span> Avant Braive
+        </div>
+        <ul>
+          <li><span class="ba-icon">📵</span>Appels manqués sur le chantier, en silence</li>
+          <li><span class="ba-icon">💸</span>3 prospects perdus par semaine sans le savoir</li>
+          <li><span class="ba-icon">😓</span>4 avis Google après 12 ans de métier</li>
+          <li><span class="ba-icon">🌙</span>Soirées perdues sur les devis et relances</li>
+          <li><span class="ba-icon">😤</span>Concurrent moins bon mais 1er sur Google Maps</li>
+        </ul>
+      </div>
+      <div class="ba-card after">
+        <div class="ba-card-label">
+          <span>✓</span> Avec Braive
+        </div>
+        <ul>
+          <li><span class="ba-icon">⚡</span>Réponse automatique en 2 minutes — 24h/24</li>
+          <li><span class="ba-icon">📈</span>Zéro prospect perdu, agenda qui se remplit</li>
+          <li><span class="ba-icon">⭐</span>Avis collectés après chaque chantier, sans effort</li>
+          <li><span class="ba-icon">🏠</span>Tu rentres chez toi, le système gère</li>
+          <li><span class="ba-icon">🎯</span>Tu apparais en premier. Tes concurrents te regardent</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARALLAX 2 -->
+<div class="parallax">
+  <div class="parallax-bg" style="background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80')"></div>
+  <div class="parallax-overlay" style="background:rgba(10,50,35,0.80)"></div>
+  <div class="parallax-content">
+    <h2>"Mon concurrent moins bon que moi<br>apparaît avant moi sur Google."</h2>
+    <p>C'est ce que nous disent 9 artisans sur 10 au premier appel. On règle ça en 5 jours.</p>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="testi">
+  <div class="testi-inner">
+    <div class="testi-header reveal">
+      <div class="section-label">Ils nous font confiance</div>
+      <h2>Ce que disent nos artisans.</h2>
+      <p>Des résultats réels. Des artisans comme toi.</p>
+    </div>
+    <div class="testi-track-wrap">
+      <div class="testi-track" id="testi-track">
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-text">"En 3 semaines j'ai reçu 14 demandes de devis. D'habitude j'en ai 3 ou 4 par mois. Le système répond même la nuit."</div>
+          <div class="testi-author">
+            <div class="testi-avatar" style="background:#0B1628;border:1px solid rgba(43,102,209,0.3)">PL</div>
+            <div><div class="testi-name">Patrick L.</div><div class="testi-role">Plombier — Lyon</div></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-text">"Avant j'avais 4 avis Google. Après 2 mois avec Braive j'en ai 31. Mes nouveaux clients me disent tous qu'ils m'ont trouvé sur Google."</div>
+          <div class="testi-author">
+            <div class="testi-avatar" style="background:var(--teal)">MR</div>
+            <div><div class="testi-name">Marie R.</div><div class="testi-role">Coiffeuse — Bordeaux</div></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-text">"Je perdais des clients parce que je ne pouvais pas décrocher. Maintenant le système gère tout. 3 nouveaux chantiers signés le premier mois."</div>
+          <div class="testi-author">
+            <div class="testi-avatar" style="background:#e67e22">TD</div>
+            <div><div class="testi-name">Thomas D.</div><div class="testi-role">Électricien — Paris</div></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-text">"Mon chiffre d'affaires a augmenté de 22% en 2 mois. Je n'aurais jamais cru que quelque chose d'aussi simple puisse changer autant."</div>
+          <div class="testi-author">
+            <div class="testi-avatar" style="background:#8e44ad">SB</div>
+            <div><div class="testi-name">Sophie B.</div><div class="testi-role">Restauratrice — Bordeaux</div></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-text">"L'installation a pris 4 jours. Dès la première semaine j'avais 5 nouveaux contacts. Mon agenda est plein 3 semaines à l'avance."</div>
+          <div class="testi-author">
+            <div class="testi-avatar" style="background:#c0392b">JM</div>
+            <div><div class="testi-name">Jean-Marc V.</div><div class="testi-role">Menuisier — Nantes</div></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-text">"Je suis électricien depuis 18 ans, jamais eu de site. En 1 mois avec Braive j'ai plus de clients que jamais. Incroyable."</div>
+          <div class="testi-author">
+            <div class="testi-avatar" style="background:#27ae60">RD</div>
+            <div><div class="testi-name">Rémi D.</div><div class="testi-role">Électricien — Marseille</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-nav">
+      <button class="testi-btn" onclick="prevTesti()">‹</button>
+      <button class="testi-btn" onclick="nextTesti()">›</button>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="tarifs">
+  <div class="pricing-inner">
+    <div class="pricing-header reveal">
+      <div class="section-label">Tarifs</div>
+      <h2>Simple. Transparent. Sans engagement.</h2>
+      <p>Un chantier récupéré rembourse ton abonnement. Le reste, c'est du bénéfice.</p>
+    </div>
+    <div class="plans">
+      <div class="plan reveal">
+        <div class="plan-name">Starter</div>
+        <div class="plan-price">290<span>€/mois</span></div>
+        <div class="plan-fiscal">✓ Éligible Chèque France Num · 100% déductible</div>
+        <div class="plan-desc">Pour ne plus jamais perdre un prospect</div>
+        <ul class="plan-features">
+          <li class="yes"><span class="check-yes">✓</span>Réponse auto appels manqués (SMS)</li>
+          <li class="yes"><span class="check-yes">✓</span>Optimisation Google My Business</li>
+          <li class="yes"><span class="check-yes">✓</span>Système avis automatique post-chantier</li>
+          <li class="yes"><span class="check-yes">✓</span>Rapport mensuel chiffré</li>
+          <li class="no">Page web SEO locale</li>
+          <li class="no">Publication réseaux sociaux</li>
+          <li class="no">Google Ads géré</li>
+        </ul>
+        <a href="#contact" class="plan-btn secondary">Commencer</a>
+      </div>
+      <div class="plan popular reveal reveal-delay-1">
+        <div class="popular-tag">Le plus choisi</div>
+        <div class="plan-name">Pro</div>
+        <div class="plan-price">490<span>€/mois</span></div>
+        <div class="plan-fiscal">✓ Éligible Chèque France Num · 100% déductible</div>
+        <div class="plan-desc">Pour dominer ton marché local</div>
+        <ul class="plan-features">
+          <li class="yes"><span class="check-yes">✓</span>Tout le Starter</li>
+          <li class="yes"><span class="check-yes">✓</span>Page web locale optimisée SEO</li>
+          <li class="yes"><span class="check-yes">✓</span>Publication réseaux 3x par semaine</li>
+          <li class="yes"><span class="check-yes">✓</span>Rapport mensuel détaillé</li>
+          <li class="yes"><span class="check-yes">✓</span>Support WhatsApp direct</li>
+          <li class="no">Chatbot qualification prospects</li>
+          <li class="no">Google Ads géré</li>
+        </ul>
+        <a href="#contact" class="plan-btn primary">Commencer</a>
+      </div>
+      <div class="plan reveal reveal-delay-2">
+        <div class="plan-name">Domination</div>
+        <div class="plan-price">790<span>€/mois</span></div>
+        <div class="plan-fiscal">✓ Éligible Chèque France Num · 100% déductible</div>
+        <div class="plan-desc">Pour ceux qui veulent tout automatiser</div>
+        <ul class="plan-features">
+          <li class="yes"><span class="check-yes">✓</span>Tout le Pro</li>
+          <li class="yes"><span class="check-yes">✓</span>Chatbot qualification prospects</li>
+          <li class="yes"><span class="check-yes">✓</span>Google Ads local géré</li>
+          <li class="yes"><span class="check-yes">✓</span>Appel stratégique mensuel 30 min</li>
+          <li class="yes"><span class="check-yes">✓</span>Accès prioritaire support</li>
+          <li class="yes"><span class="check-yes">✓</span>Rapport avancé + recommandations</li>
+          <li class="yes"><span class="check-yes">✓</span>Optimisation continue chaque mois</li>
+        </ul>
+        <a href="#contact" class="plan-btn secondary">Commencer</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AIDE FISCALE -->
+<section class="fiscal">
+  <div class="fiscal-inner">
+    <div class="section-label">Financement & aides</div>
+    <h2 class="reveal">Votre abonnement peut vous<br>coûter moins de <span style="color:var(--blue-lt)">150€/mois.</span></h2>
+    <p class="fiscal-sub reveal reveal-delay-1">Entre les aides de l'État et la déductibilité fiscale, Braive est l'un des investissements les plus rentables pour votre activité.</p>
+    <div class="fiscal-cards reveal reveal-delay-2">
+      <div class="fiscal-card">
+        <div class="fiscal-card-tag">Aide gouvernementale</div>
+        <div class="fiscal-card-title">Chèque France Num</div>
+        <div class="fiscal-card-text">Aide de l'État pour les artisans qui adoptent des outils digitaux. Demande en 10 minutes sur francenum.gouv.fr — votre premier mois est pratiquement offert.</div>
+        <div class="fiscal-card-amount">500€ remboursés</div>
+      </div>
+      <div class="fiscal-card">
+        <div class="fiscal-card-tag">Avantage fiscal</div>
+        <div class="fiscal-card-title">Charge professionnelle déductible</div>
+        <div class="fiscal-card-text">Votre abonnement Braive est déductible à 100% de vos charges. À 30% d'imposition, votre Starter vous revient réellement à ~200€/mois net.</div>
+        <div class="fiscal-card-amount">~90€ économisés/mois</div>
+      </div>
+    </div>
+    <p class="fiscal-note reveal">Vérifiez les conditions avec votre comptable ou sur francenum.gouv.fr. Les aides peuvent évoluer.</p>
+  </div>
+</section>
+
+<!-- GARANTIE -->
+<section class="guarantee">
+  <div class="guarantee-inner">
+    <div class="section-label" style="color:rgba(255,255,255,0.6);border-color:rgba(255,255,255,0.2)">Garantie</div>
+    <h2>Premier mois sans risque.</h2>
+    <p>Si après 30 jours tu n'es pas convaincu par ce que le système a généré pour toi, on s'arrête. Sans frais, sans discussion, sans mauvaise ambiance. Ma réputation vaut plus que ton abonnement.</p>
+  </div>
+</section>
+
+<!-- PARALLAX 3 -->
+<div class="parallax">
+  <div class="parallax-bg" style="background-image:url('https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1600&q=80')"></div>
+  <div class="parallax-overlay" style="background:rgba(7,14,26,0.82)"></div>
+  <div class="parallax-content">
+    <h2>Pendant que tu lis ça,<br>un artisan perd un prospect.</h2>
+    <p>20 minutes d'audit gratuit. Zéro engagement. On te dit exactement ce que tu perds chaque semaine.</p>
+    <a href="#contact" class="btn-white">Réserver mon audit gratuit</a>
+  </div>
+</div>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="faq-inner">
+    <div class="faq-header reveal">
+      <div class="section-label">Questions fréquentes</div>
+      <h2>Tout savoir<br>sur Braive</h2>
+    </div>
+    <div class="faq-list reveal reveal-delay-1">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Est-ce que je dois faire quelque chose pour que ça marche ?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Non. C'est exactement l'idée. On s'occupe de l'installation complète en 5 jours. Tu nous donnes accès à ton numéro de téléphone et ton compte Google. On fait tout le reste. Tu n'as rien à apprendre, rien à gérer.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Combien de temps avant de voir des résultats ?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Les premiers résultats arrivent dès la première semaine : les appels manqués sont automatiquement répondus dès le jour 1. Les avis Google commencent à arriver dans les 10-15 jours. Le rapport mensuel te montre tout en chiffres à J+30.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Et si ça ne marche pas pour moi ?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">C'est pour ça qu'on propose une garantie premier mois. Si après 30 jours tu ne vois pas de résultats concrets, on s'arrête sans frais. Aucun engagement, aucune mauvaise surprise.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Comment fonctionne la réponse automatique aux appels ?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Quand tu manques un appel, le système envoie automatiquement un SMS au prospect dans les 2 minutes : "Bonjour, c'est [ton prénom]. Je suis actuellement en intervention. Je vous rappelle dès que possible — ou répondez ici si vous êtes disponible." Simple, humain, efficace.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Quel retour sur investissement peut-on attendre ?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Un chantier moyen vaut 800€. Si le système te permet de récupérer un seul chantier par mois, ton Starter à 290€ est remboursé à 176%. En moyenne, nos clients récupèrent 3 à 5 chantiers supplémentaires le premier mois.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Est-ce que c'est éligible au Chèque France Num ?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Oui. Braive est éligible au Chèque France Num — une aide de l'État de 500€ pour les artisans qui adoptent des outils digitaux. La demande prend 10 minutes sur francenum.gouv.fr. Ton premier mois est pratiquement offert.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="section-label">Audit gratuit</div>
+    <h2 class="reveal">Prêt à <span>transformer</span><br>ton activité ?</h2>
+    <p class="reveal reveal-delay-1">On analyse ta situation, on t'explique exactement ce que tu perds. Gratuit, sans engagement, 20 minutes.</p>
+    <form class="contact-form reveal reveal-delay-2" action="https://formspree.io/f/mrerprkg" method="POST">
+      <div>
+        <label>Ton prénom *</label>
+        <input type="text" name="prenom" placeholder="Matthias" required/>
+      </div>
+      <div>
+        <label>Ton métier *</label>
+        <input type="text" name="metier" placeholder="Ex: plombier, électricien, coiffeur..." required/>
+      </div>
+      <div>
+        <label>Ta ville *</label>
+        <input type="text" name="ville" placeholder="Ex: Rueil-Malmaison" required/>
+      </div>
+      <div>
+        <label>Ton téléphone *</label>
+        <input type="tel" name="telephone" placeholder="06 XX XX XX XX" required/>
+      </div>
+      <div>
+        <label>Ton email *</label>
+        <input type="email" name="email" placeholder="contact@ton-entreprise.fr" required/>
+      </div>
+      <div>
+        <label>Budget mensuel</label>
+        <select name="budget">
+          <option value="">Choisir une formule</option>
+          <option>290€/mois — Starter</option>
+          <option>490€/mois — Pro</option>
+          <option>790€/mois — Domination</option>
+          <option>Je veux d'abord l'audit gratuit</option>
+        </select>
+      </div>
+      <button type="submit" class="contact-submit">Je veux mes premiers leads cette semaine →</button>
+      <p class="contact-note">Sans engagement · Réponse sous 2h · 100% confidentiel</p>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <svg width="32" height="32" viewBox="0 0 120 120">
+      <rect width="120" height="120" rx="22" fill="rgba(255,255,255,0.06)"/>
+      <path fill="white" fill-rule="evenodd" d="M22 18L48 18Q92 18 92 40Q92 62 48 62Q100 62 100 82Q100 102 48 102L22 102ZM48 26Q82 26 82 40Q82 54 48 54ZM48 70Q90 70 90 82Q90 94 48 94Z"/>
+    </svg>
+    <div class="footer-wordmark">bra<span>i</span>ve</div>
+  </div>
+  <p>Toujours là pour toi · 2026</p>
+  <p style="margin-top:.4rem">contact@braive-agency.fr · Tous droits réservés</p>
+</footer>
+
+<script>
+/* ── CHAT ANIMATION ── */
+const chatData=[
+  {type:'time',text:'Aujourd\'hui 14h23 — Patrick est sur le chantier'},
+  {type:'in',text:'Bonjour, j\'ai une fuite sous l\'évier, vous êtes disponible ?'},
+  {type:'bot',text:'Bonjour ! Je suis l\'assistant de Patrick Leroy, plombier. Il est actuellement en intervention mais je prends note de votre demande. Quelle est votre adresse ?'},
+  {type:'in',text:'15 rue des Lilas, Rueil-Malmaison'},
+  {type:'bot',text:'Parfait. Patrick sera disponible ce soir entre 18h et 20h, ou demain matin. Quelle option vous convient ?'},
+  {type:'in',text:'Ce soir 18h c\'est parfait !'},
+  {type:'bot',text:'RDV confirmé ✓ ce soir à 18h. Patrick vous appellera 30 min avant. Votre numéro ?'},
+  {type:'time',text:'Patrick a été notifié · Chantier sauvé 🎉'},
+];
+let ci=1;
+const msgs=document.getElementById('chat-msgs');
+function addMsg(){
+  if(ci>=chatData.length)return;
+  const d=chatData[ci++];
+  if(d.type==='time'){
+    const t=document.createElement('div');t.className='msg-time';t.textContent=d.text;msgs.appendChild(t);
+    setTimeout(addMsg,1800);
+  }else{
+    const typing=document.createElement('div');typing.className='typing';
+    typing.innerHTML='<span></span><span></span><span></span>';
+    if(d.type==='in')typing.style.alignSelf='flex-end';
+    msgs.appendChild(typing);msgs.scrollTop=msgs.scrollHeight;
+    setTimeout(()=>{
+      typing.remove();
+      const m=document.createElement('div');m.className='msg '+d.type;m.textContent=d.text;
+      msgs.appendChild(m);msgs.scrollTop=msgs.scrollHeight;
+      setTimeout(addMsg,d.type==='bot'?2200:1200);
+    },900);
+  }
+}
+setTimeout(addMsg,1500);
+
+/* ── CALCULATOR ── */
+function updateCalc(){
+  const calls=parseInt(document.getElementById('slider-calls').value);
+  const chantier=parseInt(document.getElementById('slider-chantier').value);
+  const pct=parseInt(document.getElementById('slider-pct').value);
+  document.getElementById('val-calls').textContent=calls+' appels';
+  document.getElementById('val-chantier').textContent=chantier.toLocaleString('fr-FR')+' €';
+  document.getElementById('val-pct').textContent=pct+'%';
+  const lostPerWeek=calls*(pct/100);
+  const lostPerMonth=Math.round(lostPerWeek*4.3);
+  const revenue=Math.round(lostPerMonth*chantier);
+  document.getElementById('result-amount').textContent=revenue.toLocaleString('fr-FR')+' €';
+  document.getElementById('res-prospects').textContent=lostPerMonth;
+  const roi=Math.round(((chantier-290)/290)*100);
+  document.getElementById('res-roi').textContent=roi>0?'+'+roi+'%':roi+'%';
+  document.getElementById('res-roi').style.color=roi>0?'#4ade80':'#e74c3c';
+  // Update slider backgrounds
+  ['slider-calls','slider-chantier','slider-pct'].forEach(id=>{
+    const s=document.getElementById(id);
+    const pctVal=((s.value-s.min)/(s.max-s.min)*100).toFixed(1);
+    s.style.setProperty('--pct',pctVal+'%');
+  });
+}
+updateCalc();
+
+/* ── TESTIMONIALS CAROUSEL ── */
+let tIdx=0;const cw=316;
+const totalCards=6;
+function updateTesti(){
+  const visible=Math.max(1,Math.floor(document.querySelector('.testi-track-wrap').offsetWidth/cw));
+  const max=Math.max(0,totalCards-visible);
+  tIdx=Math.min(tIdx,max);
+  document.getElementById('testi-track').style.transform=`translateX(-${tIdx*cw}px)`;
+}
+function nextTesti(){tIdx=tIdx>=(totalCards-2)?0:tIdx+1;updateTesti()}
+function prevTesti(){tIdx=tIdx<=0?totalCards-2:tIdx-1;updateTesti()}
+setInterval(nextTesti,3800);
+
+/* ── FAQ ACCORDION ── */
+function toggleFaq(btn){
+  const isOpen=btn.classList.contains('open');
+  document.querySelectorAll('.faq-q').forEach(b=>{
+    b.classList.remove('open');
+    b.nextElementSibling.style.maxHeight='0';
+  });
+  if(!isOpen){
+    btn.classList.add('open');
+    btn.nextElementSibling.style.maxHeight=btn.nextElementSibling.scrollHeight+'px';
+  }
+}
+
+/* ── SCROLL REVEAL ── */
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible')}});
+},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+document.querySelectorAll('.feat-card').forEach(el=>observer.observe(el));
+
+/* ── CANVAS PARTICLE ── */
+const canvas=document.getElementById('feat-canvas');
+if(canvas){
+  const ctx=canvas.getContext('2d');
+  let W,H,pts=[];
+  function resize(){
+    W=canvas.offsetWidth;H=canvas.offsetHeight;
+    canvas.width=W;canvas.height=H;
+    pts=[];for(let i=0;i<40;i++){pts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4,r:Math.random()*2+1})}
+  }
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    pts.forEach(p=>{
+      p.x+=p.vx;p.y+=p.vy;
+      if(p.x<0||p.x>W)p.vx*=-1;
+      if(p.y<0||p.y>H)p.vy*=-1;
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle='rgba(43,102,209,0.6)';ctx.fill();
+    });
+    pts.forEach((a,i)=>{pts.slice(i+1).forEach(b=>{
+      const dx=a.x-b.x,dy=a.y-b.y,d=Math.sqrt(dx*dx+dy*dy);
+      if(d<100){ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.strokeStyle=`rgba(43,102,209,${.15*(1-d/100)})`;ctx.stroke()}
+    })});
+    requestAnimationFrame(draw);
+  }
+  new ResizeObserver(resize).observe(canvas);
+  resize();draw();
+}
+
+/* ── SMOOTH SCROLL ── */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'})}
+  });
+});
+</script>
+</body>
+</html>
